@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class LocalAssetBundleFactory : IAssetFactory
 {
-    public GameObject LoadAudio(string name)
+    public GameObject LoadSoldier(string name)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public GameObject LoadEnemy(string name)
+    {
+        throw new System.NotImplementedException();
+    }
+    public GameObject LoadWeapon(string name)
     {
         throw new System.NotImplementedException();
     }
@@ -14,22 +23,11 @@ public class LocalAssetBundleFactory : IAssetFactory
         throw new System.NotImplementedException();
     }
 
-    public GameObject LoadEnemy(string name)
+    public AudioClip LoadAudio(string name)
     {
         throw new System.NotImplementedException();
     }
-
-    public GameObject LoadSoldier(string name)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public GameObject LoadSprite(string name)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public GameObject LoadWeapon(string name)
+    public Sprite LoadSprite(string name)
     {
         throw new System.NotImplementedException();
     }

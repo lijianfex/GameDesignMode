@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WeaponRocket : IWeapon
 {
+    public WeaponRocket(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    {
+    }
+
     protected override void PlayBulletEffect(Vector3 targetPostion)
     {
         DoPlayBulletEffect(0.3f,targetPostion);

@@ -8,6 +8,6 @@ public interface IAssetFactory
     GameObject LoadEnemy(string name);
     GameObject LoadWeapon(string name);
     GameObject LoadEffect(string name);
-    GameObject LoadAudio(string name);
-    GameObject LoadSprite(string name);
+    AudioClip LoadAudio(string name);
+    Sprite LoadSprite(string name);
 }

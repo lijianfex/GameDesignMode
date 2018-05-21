@@ -17,6 +17,7 @@ public abstract class IWeapon
 
     protected GameObject mGameObject;   //武器物体
     protected ICharacter mOwner;        //武器拥有者
+
     protected ParticleSystem mParticle; //武器粒子特效
     protected LineRenderer mLine;       //子弹轨迹
     protected Light mLight;             //闪光
@@ -27,6 +28,19 @@ public abstract class IWeapon
     public float AtkRange { get { return mAtkRange; } } //获得攻击距离
     public float AtkColdTime { get { return mAtkColdTime; } } //获得攻击冷却时间
     public int Atk { get { return mAtk; } } //获得攻击力
+
+    public IWeapon(int atk,float atkRange,GameObject gameObject)
+    {
+        mAtk = atk;
+        mAtkRange = atkRange;
+        mGameObject = gameObject;
+
+        Transform effect = mGameObject.transform.Find("Effect");
+        mParticle = effect.GetComponent<ParticleSystem>();
+        mLine = effect.GetComponent<LineRenderer>();
+        mLight = effect.GetComponent<Light>();
+        mAudio = effect.GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// 计时器

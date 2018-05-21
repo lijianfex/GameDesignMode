@@ -21,6 +21,7 @@ public abstract class ICharacter
     public float AtkRange { get { return mWeapon.AtkRange; } }//攻击距离
     public float AtkColdTime { get { return mWeapon.AtkColdTime; } } //攻击冷却时间
 
+    public ICharacterAttr Attr { set { mAttr = value; } }
     /// <summary>
     /// 角色位置
     /// </summary>

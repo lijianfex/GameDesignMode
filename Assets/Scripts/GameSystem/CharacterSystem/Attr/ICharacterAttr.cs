@@ -4,15 +4,15 @@ using UnityEngine;
 /// <summary>
 /// 角色的公共属性类，单独拿出来作为基类，把数值提取出来
 /// </summary>
-public abstract class ICharacterAttr
+public  class ICharacterAttr
 {
     protected string mName;         //角色名
     protected int mMaxHP;           //最大HP
     protected float mMoveSpeed;     //移动速度
-
-    protected int mCurrentHP;       //当前HP
-
     protected string mIConSprite;   //头像图片 
+    protected string mPrefabName;   //预支名
+
+    protected int mCurrentHP;       //当前HP    
 
     protected int mLv;              //等级（士兵的等级会改变） 敌人默认等级为1
     protected float mCriRate;       //0-1的暴击率 (敌人才有暴击率) 士兵没有
@@ -26,11 +26,17 @@ public abstract class ICharacterAttr
     public int CurrentHP { get { return mCurrentHP; } } //获取当前血量
 
 
-    public ICharacterAttr(IAttrStrategy strategy)
+    public ICharacterAttr(IAttrStrategy strategy,string name,int maxHP,float moveSpeed,string iconSprite,string prefabName)
     {
         mStrategy = strategy;
         mDmgDesValue = mStrategy.GetDmgDescValue(mLv);//根据等级计算出抵御的伤害值
         mCurrentHP = mMaxHP + mStrategy.GetExtraHPValue(mLv);//根据等级计算额外血量，加最大血量得到当前角色血量
+
+        mName = name;
+        mMaxHP = maxHP;
+        mMoveSpeed = moveSpeed;
+        mIConSprite = iconSprite;
+        mPrefabName = prefabName;
     }
 
     /// <summary>

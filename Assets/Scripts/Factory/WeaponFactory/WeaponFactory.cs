@@ -21,7 +21,7 @@ public class WeaponFactory : IWeaponFactory
                 assetName = "WeaponRifle";
                 break;
             case WeaponType.Rocket:
-                assetName = "WeaponRocket";
+                assetName = "WeaponRocket"; 
                 break;           
         }
 

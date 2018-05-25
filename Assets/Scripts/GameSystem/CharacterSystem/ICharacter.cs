@@ -16,12 +16,35 @@ public abstract class ICharacter
 
     protected IWeapon mWeapon;              //角色所持有的武器
 
-    public IWeapon Weapon { set { mWeapon = value; } } //设置武器
-
-    public float AtkRange { get { return mWeapon.AtkRange; } }//攻击距离
-    public float AtkColdTime { get { return mWeapon.AtkColdTime; } } //攻击冷却时间
-
+    //设置角色属性值
     public ICharacterAttr Attr { set { mAttr = value; } }
+
+    //设置人物相关
+    public GameObject GameObject
+    {
+        set
+        {
+            mGameObject = value;
+            mNavMeshAgent = mGameObject.GetComponent<NavMeshAgent>();
+            mAudioSource = mGameObject.GetComponent<AudioSource>();
+            mAnim = mGameObject.GetComponentInChildren<Animation>();
+        }
+    }
+
+    //设置武器
+    public IWeapon Weapon
+    {
+        set
+        {
+            mWeapon = value;
+            mWeapon.Owener = this;
+            //TODO 将武器设置到手上
+        }
+    }
+
+    public float AtkRange { get { return mWeapon.AtkRange; } }          //攻击距离
+    public float AtkColdTime { get { return mWeapon.AtkColdTime; } }    //攻击冷却时间
+   
     /// <summary>
     /// 角色位置
     /// </summary>

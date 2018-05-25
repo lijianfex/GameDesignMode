@@ -16,14 +16,23 @@ public abstract class IWeapon
     protected float mAtkColdTime=1f;       //攻击冷却时间
 
     protected GameObject mGameObject;   //武器物体
-    protected ICharacter mOwner;        //武器拥有者
-
     protected ParticleSystem mParticle; //武器粒子特效
     protected LineRenderer mLine;       //子弹轨迹
     protected Light mLight;             //闪光
     protected AudioSource mAudio;       //武器音效
 
     protected float mEffectDisplayTime = 0f;  //特效的显示时长
+
+    protected ICharacter mOwner;        //武器拥有者
+
+    //设置武器拥有者
+    public ICharacter Owener
+    {
+        set
+        {
+            mOwner = value;
+        }
+    }
 
     public float AtkRange { get { return mAtkRange; } } //获得攻击距离
     public float AtkColdTime { get { return mAtkColdTime; } } //获得攻击冷却时间

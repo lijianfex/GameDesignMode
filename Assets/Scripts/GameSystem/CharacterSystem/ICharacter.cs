@@ -138,17 +138,20 @@ public abstract class ICharacter
     {
         //TODO 可以采取建立一个特效管理器，里面可以有个特效池，在适当的时候释放特效资源
         //1.加载特效
-        //2.播放特效
-        //3.销毁特效
+        //2.播放特效        
+        GameObject effectGO = FactoryManager.GetAssetFactory.LoadEffect(effectName);
+        effectGO.transform.position = Position;
+        //TODO 3.销毁特效
     }
 
     /// <summary>
     /// 播放声音
     /// </summary>
     /// <param name="soundName"></param>
-    protected void DoPlaySound(string soundName)
+    protected void DoPlaySound(string clipName)
     {
-        AudioClip clip = null;  //TODO 可以采取建立一个音效管理器，里面可以有个音效池，在适当的时候释放音效资源
+        //TODO 可以采取建立一个音效管理器，里面可以有个音效池，在适当的时候释放音效资源
+        AudioClip clip = FactoryManager.GetAssetFactory.LoadAudio(clipName);//每次播放都会读内存
         mAudioSource.clip = clip;
         mAudioSource.Play();
     }

@@ -126,8 +126,8 @@ public abstract class IWeapon
     protected abstract void PlaySound();
     protected void DoPlaySound(string clipName)
     {
-
-        AudioClip clip = null;//TODO 统一加载
+        //TODO 统一加载
+        AudioClip clip = FactoryManager.GetAssetFactory.LoadAudio(clipName);
         mAudio.clip = clip;
         mAudio.Play();
     }

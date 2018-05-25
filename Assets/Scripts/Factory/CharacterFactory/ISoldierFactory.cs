@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 士兵工厂
+/// </summary>
 public class ISoldierFactory : ICharacterFactory
 {
     public ICharacter CreatCharacter<T>(WeaponType weaponType, Vector3 spawnPostion, int lv = 1) where T : ICharacter, new()
     {
-        ICharacter character = new T();
-
-        //创建角色
-        //1.加载资源
-        //2.实例化角色
-
-        //添加武器
-        //TODO
+        ICharacter character = new T();        
 
         //角色的属性值
         string name = "";
@@ -55,6 +51,14 @@ public class ISoldierFactory : ICharacterFactory
         ICharacterAttr attr = new ICharacterAttr(new SoldierAttrStrategy(), name, maxHP, moveSpeed, iconSprite, prefabName);
 
         character.Attr = attr;
+
+        //创建角色
+        //1.加载资源
+        //2.实例化角色
+
+        //添加武器
+        //TODO
+
         return character;
     }
 }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 从Resources本地文件中加载
+/// </summary>
 public class ResourcesFactory : IAssetFactory
 {
     private const string SoldierPath = "Characters/Soldier/";

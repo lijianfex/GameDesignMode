@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 武器工厂
+/// </summary>
 public class WeaponFactory : IWeaponFactory
 {
     public IWeapon CreatWeapon(WeaponType weaponType)
@@ -22,8 +25,7 @@ public class WeaponFactory : IWeaponFactory
                 break;           
         }
 
-        IAssetFactory factory = new ResourcesFactory();
-        GameObject weaponGO = factory.LoadWeapon(assetName);
+        GameObject weaponGO = FactoryManager.GetAssetFactory.LoadWeapon(assetName);
 
         switch (weaponType)
         {

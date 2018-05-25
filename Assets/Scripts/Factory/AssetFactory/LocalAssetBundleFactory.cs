@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 从本地加载AssetBundle
+/// </summary>
 public class LocalAssetBundleFactory : IAssetFactory
 {
     public GameObject LoadSoldier(string name)

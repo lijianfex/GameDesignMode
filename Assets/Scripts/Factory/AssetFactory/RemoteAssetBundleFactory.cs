@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 从服务器端加载
+/// </summary>
 public class RemoteAssetBundleFactory : IAssetFactory
 {
     public GameObject LoadSoldier(string name)

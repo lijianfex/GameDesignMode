@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IEnemyFactory : ICharacterFactory
 {
-    public ICharacter CreatCharacter<T>(WeaponType weaponType, Vector3 spawnPostion, int lv = 1) where T:ICharacter,new()
+    public ICharacter CreatCharacter<T>(WeaponType weaponType, Vector3 spawnPosition, int lv = 1) where T:ICharacter,new()
     {
         ICharacter character = new T();
         #region//赋值角色的属性值
@@ -50,7 +50,7 @@ public class IEnemyFactory : ICharacterFactory
         //创建角色
         //1.加载资源 2.设置生成点 3.赋值给角色的GameObject
         GameObject charaterGO = FactoryManager.GetAssetFactory.LoadEnemy(prefabName);
-        charaterGO.transform.position = spawnPostion;
+        charaterGO.transform.position = spawnPosition;
         character.GameObject = charaterGO;
 
         //添加武器

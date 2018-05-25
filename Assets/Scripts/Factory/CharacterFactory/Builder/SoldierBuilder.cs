@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class SoldierBuilder : ICharacterBuilder
 {
-    public SoldierBuilder(Type t, ICharacter character, WeaponType weaponType, Vector3 spawnPosition, int lv) : base(t, character, weaponType, spawnPosition, lv)
+    public SoldierBuilder(System.Type t, ICharacter character, WeaponType weaponType, Vector3 spawnPosition, int lv) : base(t, character, weaponType, spawnPosition, lv)
     {
     }
 

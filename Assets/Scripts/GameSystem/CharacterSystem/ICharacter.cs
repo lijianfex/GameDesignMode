@@ -39,6 +39,8 @@ public abstract class ICharacter
             mWeapon = value;
             mWeapon.Owener = this;
             //TODO 将武器设置到手上
+            GameObject anchor = UnityTool.FindChild<Transform>(mGameObject, "weapon-point");
+            UnityTool.AttachChild(anchor, mWeapon.GameObject);
         }
     }
 

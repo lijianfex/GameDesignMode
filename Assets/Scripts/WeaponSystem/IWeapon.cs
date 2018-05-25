@@ -34,6 +34,7 @@ public abstract class IWeapon
         }
     }
 
+    public GameObject GameObject { get { return mGameObject; } } //获取武器物体
     public float AtkRange { get { return mAtkRange; } } //获得攻击距离
     public float AtkColdTime { get { return mAtkColdTime; } } //获得攻击冷却时间
     public int Atk { get { return mAtk; } } //获得攻击力

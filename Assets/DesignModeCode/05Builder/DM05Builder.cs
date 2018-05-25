@@ -7,7 +7,7 @@ public class DM05Builder : MonoBehaviour
     private void Start()
     {
         IBuilder fatBuilder = new FatPresonBuilder();
-        IBuilder thinBuilder = new ThinPersonBuilder();
+        //IBuilder thinBuilder = new ThinPersonBuilder();
 
         Person fatPerson = Directer.Construct(fatBuilder);
         fatPerson.Show();

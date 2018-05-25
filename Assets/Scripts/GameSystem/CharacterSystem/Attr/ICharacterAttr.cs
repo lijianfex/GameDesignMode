@@ -26,7 +26,7 @@ public  class ICharacterAttr
     public int CurrentHP { get { return mCurrentHP; } } //获取当前血量
 
 
-    public ICharacterAttr(IAttrStrategy strategy,string name,int maxHP,float moveSpeed,string iconSprite,string prefabName)
+    public ICharacterAttr(IAttrStrategy strategy,string name,int lv,int maxHP,float moveSpeed,string iconSprite,string prefabName)
     {
         mStrategy = strategy;
         mDmgDesValue = mStrategy.GetDmgDescValue(mLv);//根据等级计算出抵御的伤害值
@@ -34,6 +34,7 @@ public  class ICharacterAttr
 
         mName = name;
         mMaxHP = maxHP;
+        mLv = lv;
         mMoveSpeed = moveSpeed;
         mIConSprite = iconSprite;
         mPrefabName = prefabName;

@@ -11,41 +11,11 @@ public class SoldierBuilder : ICharacterBuilder
 
     public override void AddCharacterAttr()
     {
-        #region// 赋值角色的属性值
-        string name = "";
-        int maxHP = 0;
-        float moveSpeed = 0f;
-        string iconSprite = "";        
-        if (mT == typeof(SoldierCaptain))
-        {
-            name = "上尉士兵";
-            maxHP = 100;
-            moveSpeed = 3f;
-            iconSprite = "CaptainIcon";
-            mPrefabName = "Soldier1";
-        }
-        else if (mT == typeof(SoldierSergeant))
-        {
-            name = "中士士兵";
-            maxHP = 90;
-            moveSpeed = 3f;
-            iconSprite = "SergeantIcon";
-            mPrefabName = "Soldier2";
-        }
-        else if (mT == typeof(SoldierRookie))
-        {
-            name = "新人士兵";
-            maxHP = 80;
-            moveSpeed = 2.5f;
-            iconSprite = "RookieIcon";
-            mPrefabName = "Soldier3";
-        }
-        else
-        {
-            Debug.LogError("类型:" + mT + "不属于ISodier,不存在战士！");            
-        }
-        #endregion
-        ICharacterAttr attr = new SoldierAttr(new SoldierAttrStrategy(), name, mLv, maxHP, moveSpeed, iconSprite, mPrefabName);
+        CharacterBaseAttr soldierBaseAttr = FactoryManager.GetAttrFactory.GetCharacterBaseAttr(mT);
+
+        mPrefabName = soldierBaseAttr.PrefabName;//下方添加角色需要prefabName;
+
+        ICharacterAttr attr = new SoldierAttr(new SoldierAttrStrategy(), mLv,soldierBaseAttr);
         mCharacter.Attr = attr;
     }
 

@@ -11,6 +11,22 @@ public static class FactoryManager
     private static ICharacterFactory mSoldierFactory = null;
     private static ICharacterFactory mEnemyFactory = null;
     private static IWeaponFactory mWeaponFactory = null;
+    private static IAttrFactory mAttrFactory = null;
+
+    /// <summary>
+    /// 属性工厂
+    /// </summary>
+    public static IAttrFactory GetAttrFactory
+    {
+        get
+        {
+            if(mAttrFactory==null)
+            {
+                mAttrFactory = new AttrFactory();
+            }
+            return mAttrFactory;
+        }
+    }
 
     /// <summary>
     /// 资源加载工厂

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class EnemyAttr : ICharacterAttr
 {
-    public EnemyAttr(IAttrStrategy strategy, string name, int lv, int maxHP, float moveSpeed, string iconSprite, string prefabName) : base(strategy, name, lv, maxHP, moveSpeed, iconSprite, prefabName)
+    public EnemyAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr) : base(strategy, lv, baseAttr)
     {
     }
 }

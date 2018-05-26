@@ -4,14 +4,9 @@ using UnityEngine;
 /// <summary>
 /// 角色的公共属性类，单独拿出来作为基类，把数值提取出来
 /// </summary>
-public  class ICharacterAttr
+public class ICharacterAttr
 {
-    protected string mName;         //角色名
-    protected int mMaxHP;           //最大HP
-    protected float mMoveSpeed;     //移动速度
-    protected string mIConSprite;   //头像图片 
-    protected string mPrefabName;   //预支名
-    protected float mCriRate;       //0-1的暴击率 (敌人才有暴击率) 士兵没有
+    protected CharacterBaseAttr mCharacterBaseAttr;  //角色的基础属性
 
     protected int mCurrentHP;       //当前HP 
 
@@ -22,22 +17,20 @@ public  class ICharacterAttr
 
     public int CurrentHP { get { return mCurrentHP; } } //获取当前血量
     protected int mDmgDesValue; //抵御的伤害值
-    public int CritValue { get { return mStrategy.GetCritDmg(mCriRate); } }//暴击增加的伤害
-    
+    public int CritValue { get { return mStrategy.GetCritDmg(mCharacterBaseAttr.CriRate); } }//暴击增加的伤害
 
 
-    public ICharacterAttr(IAttrStrategy strategy,string name,int lv,int maxHP,float moveSpeed,string iconSprite,string prefabName)
+
+    public ICharacterAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr)
     {
         mStrategy = strategy;
-        mDmgDesValue = mStrategy.GetDmgDescValue(mLv);//根据等级计算出抵御的伤害值
-        mCurrentHP = mMaxHP + mStrategy.GetExtraHPValue(mLv);//根据等级计算额外血量，加最大血量得到当前角色血量
-
-        mName = name;
-        mMaxHP = maxHP;
         mLv = lv;
-        mMoveSpeed = moveSpeed;
-        mIConSprite = iconSprite;
-        mPrefabName = prefabName;
+        mCharacterBaseAttr = baseAttr;
+
+        mDmgDesValue = mStrategy.GetDmgDescValue(mLv);//根据等级计算出抵御的伤害值
+        mCurrentHP = baseAttr.MaxHP + mStrategy.GetExtraHPValue(mLv);//根据等级计算额外血量，加最大血量得到当前角色血量       
+
+
     }
 
     /// <summary>
@@ -50,4 +43,5 @@ public  class ICharacterAttr
         if (damage < 5) damage = 5;//确保至少减少5
         mCurrentHP -= damage;
     }
+
 }

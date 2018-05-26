@@ -52,7 +52,7 @@ public static class FactoryManager
         {
             if (mSoldierFactory == null)
             {
-                mSoldierFactory = new ISoldierFactory();
+                mSoldierFactory = new SoldierFactory();
             }
             return mSoldierFactory;
         }
@@ -67,7 +67,7 @@ public static class FactoryManager
         {
             if (mEnemyFactory == null)
             {
-                mEnemyFactory = new IEnemyFactory();
+                mEnemyFactory = new EnemyFactory();
             }
             return mEnemyFactory;
         }

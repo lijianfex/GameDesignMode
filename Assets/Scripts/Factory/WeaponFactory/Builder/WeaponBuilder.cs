@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WeaponBuilder : IWeaponBuilder
+{
+    public WeaponBuilder(WeaponType weaponType) : base(weaponType)
+    {
+    }
+
+    public override void AddWeaponAttr()
+    {
+        WeaponBaseAttr weaponBaseAttr = FactoryManager.GetAttrFactory.GetWeaponBaseAttr(mWeaponType);
+        mPrefabName = weaponBaseAttr.PrefabName;
+        mWeapon.BaseAttr = weaponBaseAttr;
+    }
+
+    public override void AddGameObject()
+    {
+        mWeapon.GameObject= FactoryManager.GetAssetFactory.LoadWeapon(mPrefabName);
+    }
+
+    
+    public override IWeapon GetResult()
+    {
+        return mWeapon;
+    }
+}

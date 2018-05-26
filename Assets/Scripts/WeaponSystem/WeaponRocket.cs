@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponRocket : IWeapon
 {
-    public WeaponRocket(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    public WeaponRocket(WeaponBaseAttr baseAttr) : base(baseAttr)
     {
     }
 

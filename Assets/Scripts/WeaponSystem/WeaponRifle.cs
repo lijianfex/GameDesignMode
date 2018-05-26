@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class WeaponRifle : IWeapon
 {
-    public WeaponRifle(WeaponBaseAttr baseAttr) : base(baseAttr)
-    {
-    }
+    
 
     protected override void PlayBulletEffect(Vector3 targetPostion)
     {

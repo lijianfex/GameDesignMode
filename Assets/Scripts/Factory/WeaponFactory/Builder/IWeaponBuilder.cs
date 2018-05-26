@@ -5,13 +5,14 @@ using UnityEngine;
 public abstract class IWeaponBuilder
 {
     protected IWeapon mWeapon; //武器成品
-
+    
     protected WeaponType mWeaponType;  //类型
     protected string mPrefabName = "";    //预支名 
 
-    public IWeaponBuilder(WeaponType weaponType)
+    public IWeaponBuilder(WeaponType weaponType,IWeapon weapon)
     {
         mWeaponType = weaponType;
+        mWeapon = weapon;
     }
 
     //组装属性

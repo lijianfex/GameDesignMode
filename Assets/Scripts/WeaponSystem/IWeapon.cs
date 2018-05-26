@@ -53,11 +53,7 @@ public abstract class IWeapon
     public float AtkColdTime { get { return mWeaponBaseAttr.AtkColdTime; } } //获得攻击冷却时间
     public int Atk { get { return mWeaponBaseAttr.Atk; } } //获得攻击力
 
-    public IWeapon(WeaponBaseAttr baseAttr)
-    {
-        mWeaponBaseAttr = baseAttr;
-        
-    }
+    
 
     /// <summary>
     /// 计时器

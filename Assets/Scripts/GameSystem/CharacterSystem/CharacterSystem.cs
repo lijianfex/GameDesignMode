@@ -15,6 +15,7 @@ public class CharacterSystem : IGameSystem
     public void AddEnemy(IEnemy enemy)
     {
         mEnemys.Add(enemy);
+        
     }
 
     //删除敌人

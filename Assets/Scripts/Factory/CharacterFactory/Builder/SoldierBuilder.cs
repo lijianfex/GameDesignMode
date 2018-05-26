@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class SoldierBuilder : ICharacterBuilder
 {
-    public SoldierBuilder(System.Type t, ICharacter character, WeaponType weaponType, Vector3 spawnPosition, int lv) : base(t, character, weaponType, spawnPosition, lv)
+    public SoldierBuilder(Type t, ICharacter character, WeaponType weaponType, IWeapon weapon, Vector3 spawnPosition, int lv) : base(t, character, weaponType, weapon, spawnPosition, lv)
     {
     }
 
@@ -32,7 +33,7 @@ public class SoldierBuilder : ICharacterBuilder
     public override void AddWeapon()
     {
         //添加武器        
-        IWeapon weapon = FactoryManager.GetWeaponFactory.CreatWeapon(mWeaponType);
+        IWeapon weapon = FactoryManager.GetWeaponFactory.CreatWeapon(mWeaponType,mWeapon);
         mCharacter.Weapon = weapon;
     }
 

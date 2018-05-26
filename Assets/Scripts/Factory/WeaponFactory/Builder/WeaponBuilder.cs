@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class WeaponBuilder : IWeaponBuilder
 {
-    public WeaponBuilder(WeaponType weaponType) : base(weaponType)
+    public WeaponBuilder(WeaponType weaponType, IWeapon weapon) : base(weaponType, weapon)
     {
+
     }
 
     public override void AddWeaponAttr()
@@ -18,10 +19,10 @@ public class WeaponBuilder : IWeaponBuilder
 
     public override void AddGameObject()
     {
-        mWeapon.GameObject= FactoryManager.GetAssetFactory.LoadWeapon(mPrefabName);
+        mWeapon.GameObject = FactoryManager.GetAssetFactory.LoadWeapon(mPrefabName);
     }
 
-    
+
     public override IWeapon GetResult()
     {
         return mWeapon;

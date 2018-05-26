@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IWeaponFactory
 {
-    IWeapon CreatWeapon(WeaponType weaponType);
+    IWeapon CreatWeapon(WeaponType weaponType, IWeapon weapon);
 }

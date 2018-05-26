@@ -7,11 +7,11 @@ using UnityEngine;
 /// </summary>
 public class EnemyFactory : ICharacterFactory
 {
-    public ICharacter CreatCharacter<T>(WeaponType weaponType, Vector3 spawnPosition, int lv = 1) where T:ICharacter,new()
+    public ICharacter CreatCharacter<T>(WeaponType weaponType,IWeapon weapon, Vector3 spawnPosition, int lv = 1) where T:ICharacter,new()
     {
         ICharacter character = new T();
 
-        ICharacterBuilder enemyBuilder = new EnemyBuilder(typeof(T), character, weaponType, spawnPosition, lv);
+        ICharacterBuilder enemyBuilder = new EnemyBuilder(typeof(T), character, weaponType,weapon, spawnPosition, lv);
 
         return CharacterBuilderDirector.Construct(enemyBuilder);
 

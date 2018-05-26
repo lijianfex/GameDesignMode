@@ -7,10 +7,10 @@ using UnityEngine;
 /// </summary>
 public class WeaponFactory : IWeaponFactory
 {
-    public IWeapon CreatWeapon(WeaponType weaponType) 
+    public IWeapon CreatWeapon(WeaponType weaponType,IWeapon weapon) 
     {        
 
-        IWeaponBuilder weaponBuilder = new WeaponBuilder(weaponType);         
+        IWeaponBuilder weaponBuilder = new WeaponBuilder(weaponType,weapon);         
 
         return WeaponBuilderDirector.Construct(weaponBuilder); 
     }

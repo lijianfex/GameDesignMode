@@ -8,16 +8,18 @@ public abstract class ICharacterBuilder
 
     protected System.Type mT;           //类型
     protected WeaponType mWeaponType;   //武器类型
+    protected IWeapon mWeapon;          //具体武器
     protected Vector3 mSpawnPosition;      //生成点
     protected int mLv;                  //生成时的等级
     protected string mPrefabName="";    //预支名
 
-    public ICharacterBuilder( System.Type t, ICharacter character, WeaponType weaponType, Vector3 spawnPosition, int lv)
+    public ICharacterBuilder( System.Type t, ICharacter character, WeaponType weaponType,IWeapon weapon, Vector3 spawnPosition, int lv)
     {
         
         mT = t;
         mCharacter = character;
         mWeaponType = weaponType;
+        mWeapon = weapon;
         mSpawnPosition = spawnPosition;
         mLv = lv;
     }

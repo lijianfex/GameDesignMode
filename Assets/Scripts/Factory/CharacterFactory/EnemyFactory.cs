@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 敌人工厂
 /// </summary>
-public class IEnemyFactory : ICharacterFactory
+public class EnemyFactory : ICharacterFactory
 {
     public ICharacter CreatCharacter<T>(WeaponType weaponType, Vector3 spawnPosition, int lv = 1) where T:ICharacter,new()
     {

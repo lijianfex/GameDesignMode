@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 建造者模式（游戏的角色的属性的赋值，构造对象）
+/// </summary>
 public class DM05Builder : MonoBehaviour
 {
     private void Start()

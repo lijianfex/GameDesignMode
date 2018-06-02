@@ -9,4 +9,13 @@ public abstract class IBaseUI
     public virtual void Update() { }
     public virtual void Release() { }
 
+    protected void Show()
+    {
+        mRootUI.SetActive(true);
+    }
+
+    protected void Hide()
+    {
+        mRootUI.SetActive(false);
+    }
 }

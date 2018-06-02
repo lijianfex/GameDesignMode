@@ -25,11 +25,12 @@ public class GameStateInfoUI : IBaseUI
     {
         base.Init();        
         GameObject canvas = GameObject.Find("Canvas");
-        mRootUI = UnityTool.FindChild<Transform>(canvas, "GameStateInfoUI");
+        mRootUI = UnityTool.FindChild(canvas, "GameStateInfoUI");
 
-        GameObject heart1 = UnityTool.FindChild<Transform>(mRootUI, "heart1");
-        GameObject heart2 = UnityTool.FindChild<Transform>(mRootUI, "heart2");
-        GameObject heart3 = UnityTool.FindChild<Transform>(mRootUI, "heart3");
+        GameObject heart1 = UnityTool.FindChild(mRootUI, "heart1");
+        GameObject heart2 = UnityTool.FindChild(mRootUI, "heart2");
+        GameObject heart3 = UnityTool.FindChild(mRootUI, "heart3");
+        mHearts = new List<GameObject>();
         mHearts.Add(heart1);
         mHearts.Add(heart2);
         mHearts.Add(heart3);
@@ -41,9 +42,9 @@ public class GameStateInfoUI : IBaseUI
         mEnergySlider = UITool.FindChild<Slider>(mRootUI, "EnergySlider");
         mEnergyNum = UITool.FindChild<Text>(mRootUI, "EnergyNum");
         mMessage = UITool.FindChild<Text>(mRootUI, "Message");
-        mGameOver = UnityTool.FindChild<Transform>(mRootUI, "GameOver");
+        mGameOver = UnityTool.FindChild(mRootUI, "GameOver");
 
-
+        mGameOver.SetActive(false);
 
 
     }

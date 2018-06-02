@@ -27,7 +27,12 @@ public static class UITool
     /// <returns></returns>
     public static T FindChild<T>(GameObject parent , string childName) where T:Component
     {
-        GameObject uiGO = UnityTool.FindChild<T>(parent, childName);
+        GameObject uiGO = UnityTool.FindChild(parent, childName);
+        if(uiGO==null)
+        {
+            Debug.LogError("在游戏物体下" + parent + "查找不到" + childName);
+            return default(T);
+        }
         return uiGO.GetComponent<T>();
     }
 }

@@ -16,7 +16,7 @@ public class MainState : ISceneState
     public override void StateStart()
     {
         GameObject root = GameObject.Find("Login");
-        BtnPaly = UnityTool.FindChild<Button>(root, "BtnPlay").GetComponent<Button>();
+        BtnPaly = UnityTool.FindChild(root, "BtnPlay").GetComponent<Button>();
         BtnPaly.onClick.AddListener(OnPlayClick);
     }
 

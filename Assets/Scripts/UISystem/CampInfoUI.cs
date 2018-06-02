@@ -26,7 +26,7 @@ public class CampInfoUI : IBaseUI
     {
         base.Init();
         GameObject canvas = GameObject.Find("Canvas");
-        mRootUI = UnityTool.FindChild<Transform>(canvas, "CampInfoUI");
+        mRootUI = UnityTool.FindChild(canvas,"CampInfoUI"); 
         
         mCampIcon = UITool.FindChild<Image>(mRootUI, "CampIcon");
         mCampName = UITool.FindChild<Text>(mRootUI, "CampName");
@@ -39,6 +39,8 @@ public class CampInfoUI : IBaseUI
         mTrainTime = UITool.FindChild<Text>(mRootUI, "TrainTime");
         mBtnTrain = UITool.FindChild<Button>(mRootUI, "BtnTrain");
         mBtnTrainCancel = UITool.FindChild<Button>(mRootUI, "BtnTrainCancel");
+
+        Hide();
     }
 
  

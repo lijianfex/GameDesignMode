@@ -16,11 +16,13 @@ public class GamePauseUI : IBaseUI
     {
         base.Init();
         GameObject canvas = GameObject.Find("Canvas");
-        mRootUI = UnityTool.FindChild<Transform>(canvas, "GamePauseUI");
+        mRootUI = UnityTool.FindChild(canvas, "GamePauseUI");
 
         mCurrentStageNum = UITool.FindChild<Text>(mRootUI, "CurrentStageNum");
         mBtnContinue = UITool.FindChild<Button>(mRootUI, "BtnContinue");
         mBtnBackMain = UITool.FindChild<Button>(mRootUI, "BtnBackMain");
+
+        Hide();
     }
 
     public override void Release()

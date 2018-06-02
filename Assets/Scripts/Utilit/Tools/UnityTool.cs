@@ -10,29 +10,29 @@ public static class UnityTool
     /// <summary>
     /// 查找子物体
     /// </summary>
-    /// <typeparam name="T">组件</typeparam>
-    /// <param name="root">根物体</param>
-    /// <param name="childName">子物名</param>
-    /// <returns></returns>
-    public static GameObject FindChild<T>(GameObject rootParent , string childName) where T:Component
-    {
-        T[] childrens = rootParent.GetComponentsInChildren<T>();
+    
+    public static GameObject FindChild(GameObject rootParent , string childName)
+    { 
+        Transform[] childrens = rootParent.GetComponentsInChildren<Transform>();
         bool isFind = false;
-        T child = null;
-        foreach(T t in childrens)
+        Transform child = null;
+        foreach(Transform t in childrens)
         {
             if(t.name==childName)
             {
-                if (isFind == true)
+                if (isFind)
                 {
-                    Debug.LogWarning("游戏物体：{" + rootParent.name + "}下，存在多个子物体：" + childName);
-                    continue;
+                    Debug.LogWarning("游戏物体：{" + rootParent.name + "}下，存在多个子物体：" + childName); 
                 }
                 isFind = true;
                 child = t;                
             }
         }
-        return child.gameObject;
+        if(isFind)
+        {
+            return child.gameObject;
+        }
+        return null;
     }
 
     /// <summary>

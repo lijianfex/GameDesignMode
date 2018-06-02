@@ -5,12 +5,18 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    Gun,
-    Laser,
-    Rifle,
-    Rocket,
+    Gun=0,   
+    Rifle=1,
+    Rocket=2,
+    MAX
 }
 
+public enum SoldierType
+{
+    Rookie,
+    Sergeant,
+    Captain
+}
 
 public class CommoEnum
 {

@@ -23,7 +23,7 @@ public class SoldierInfoUI : IBaseUI
         base.Init();
 
         GameObject canvas = GameObject.Find("Canvas");
-        mRootUI = UnityTool.FindChild<Transform>(canvas, "SoldierInfoUI");
+        mRootUI = UnityTool.FindChild(canvas, "SoldierInfoUI");
 
         mSoldierIcon = UITool.FindChild<Image>(mRootUI, "SoldierIcon");
         mSoldierName = UITool.FindChild<Text>(mRootUI, "SoldierName");
@@ -34,7 +34,7 @@ public class SoldierInfoUI : IBaseUI
         mAtkRange = UITool.FindChild<Text>(mRootUI, "AtkRange");
         mMoveSpeed = UITool.FindChild<Text>(mRootUI, "MoveSpeed");
 
-
+        Hide();
     }
 
     public override void Release()

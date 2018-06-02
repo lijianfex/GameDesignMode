@@ -39,7 +39,7 @@ public class ResourcesFactory : IAssetFactory
     }
     public Sprite LoadSprite(string name)
     {
-        return LoadAsset(SpritePath + name) as Sprite;
+        return Resources.Load(SpritePath + name,typeof(Sprite)) as Sprite;
     }
 
 

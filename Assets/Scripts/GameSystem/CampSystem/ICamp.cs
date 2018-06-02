@@ -15,6 +15,12 @@ public abstract class ICamp
     protected Vector3 mPosition; //集合点
 
     protected float mTrainTime; //训练时间
+
+    public string Name { get { return mName; } }
+    public string IconSprite { get { return mIconSprite; } }
+    public abstract int Lv { get; }
+    public abstract WeaponType weaponType { get; }
+
     public ICamp(GameObject gameObject,string name,string icon,SoldierType soldierType,Vector3 position,float trainTime)
     {
         mGameObject = gameObject;
@@ -24,6 +30,8 @@ public abstract class ICamp
         mPosition = position;
         mTrainTime = trainTime;
     }
+
+    
 
     public virtual void Update(){ }
 

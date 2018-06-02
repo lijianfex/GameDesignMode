@@ -50,6 +50,31 @@ public class CampInfoUI : IBaseUI
     public void ShowCampInfoUI(ICamp camp)
     {
         Show();
+
+        mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
+        mCampName.text = camp.Name;
+        mCampLv.text = camp.Lv.ToString();
+        ShowWeaponLv(camp.weaponType);
+    }
+
+    /// <summary>
+    /// 显示枪的等级
+    /// </summary>
+    /// <param name="weaponType"></param>
+    private void ShowWeaponLv(WeaponType weaponType)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.Gun:
+                mWeaponLv.text = "短枪";
+                break;
+            case WeaponType.Rifle:
+                mWeaponLv.text = "长枪";
+                break;
+            case WeaponType.Rocket:
+                mWeaponLv.text = "火枪";
+                break;            
+        }
     }
 
     public override void Release()

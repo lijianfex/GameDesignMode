@@ -25,6 +25,7 @@ public class CampSystem : IGameSystem
     private void InitCamp(SoldierType soldierType)
     {
         GameObject gameObject = null;
+        string gameObjectName = null;
         string name ="";
         string icon = "";        
         Vector3 position = Vector3.zero;
@@ -32,17 +33,20 @@ public class CampSystem : IGameSystem
         switch (soldierType)
         {
             case SoldierType.Rookie:
-                name = "SoldierCamp_Rookie";
+                gameObjectName = "SoldierCamp_Rookie";
+                name = "新手兵营";
                 icon = "RookieCamp";
                 trainTime = 3;
                 break;
             case SoldierType.Sergeant:
-                name = "SoldierCamp_Sergeant";
+                gameObjectName = "SoldierCamp_Sergeant";
+                name = "中士兵营";
                 icon = "SergeantCamp";
                 trainTime = 4;
                 break;
             case SoldierType.Captain:
-                name = "SoldierCamp_Captain";
+                gameObjectName = "SoldierCamp_Captain";
+                name = "上尉兵营";
                 icon = "CaptainCamp";
                 trainTime = 5;
                 break;
@@ -50,7 +54,7 @@ public class CampSystem : IGameSystem
                 Debug.LogError("无法根据战士类型："+soldierType+"创建兵营");
                 break;
         }
-        gameObject = GameObject.Find(name);
+        gameObject = GameObject.Find(gameObjectName);
         position = UnityTool.FindChild(gameObject, "TrainPoint").transform.position;
         SoldierCamp camp = new SoldierCamp(gameObject, name, icon, soldierType, position,trainTime);
 

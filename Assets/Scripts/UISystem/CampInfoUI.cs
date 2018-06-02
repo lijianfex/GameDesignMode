@@ -43,8 +43,14 @@ public class CampInfoUI : IBaseUI
         Hide();
     }
 
- 
-
+    /// <summary>
+    ///显示
+    /// </summary>
+    /// <param name="camp"></param>
+    public void ShowCampInfoUI(ICamp camp)
+    {
+        Show();
+    }
 
     public override void Release()
     {
@@ -55,4 +61,6 @@ public class CampInfoUI : IBaseUI
     {
         base.Update();
     }
+
+
 }

@@ -20,6 +20,9 @@ public class GameLoop : MonoBehaviour {
 
     void Update ()
     {
-        sceneStateManager.StateUpdate();
+        if(sceneStateManager!=null)
+        {
+            sceneStateManager.StateUpdate();
+        }        
     }
 }

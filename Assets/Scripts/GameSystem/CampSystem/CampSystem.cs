@@ -53,6 +53,9 @@ public class CampSystem : IGameSystem
         gameObject = GameObject.Find(name);
         position = UnityTool.FindChild(gameObject, "TrainPoint").transform.position;
         SoldierCamp camp = new SoldierCamp(gameObject, name, icon, soldierType, position,trainTime);
+
+        gameObject.AddComponent<CampOnClick>().Camp=camp;//添加点击组件       
+
         mSoldierCamps.Add(soldierType, camp);
     }
 

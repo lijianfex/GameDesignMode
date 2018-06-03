@@ -134,6 +134,11 @@ public class GameFacade
         mEnergySystem.RecycleEnergy(value);
     }
 
+    public void UpdatEnerySlider(int nowEnergy,int max_Energy)
+    {
+        mGameStateInfoUI.UpdataEnergySlider(nowEnergy, max_Energy);
+    }
+
     /// <summary>
     /// 显示提示信息
     /// </summary>

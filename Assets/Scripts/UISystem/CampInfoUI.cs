@@ -19,6 +19,7 @@ public class CampInfoUI : IBaseUI
     private Text mTrainTime;//训练时间
 
     private Button mBtnTrain;//训练按钮
+    private Text mTrainText;//训练按钮上的文字
     private Button mBtnTrainCancel; //取消训练
     private ICamp mCamp;
 
@@ -38,6 +39,7 @@ public class CampInfoUI : IBaseUI
         mTrainNum = UITool.FindChild<Text>(mRootUI, "TrainNum");
         mTrainTime = UITool.FindChild<Text>(mRootUI, "TrainTime");
         mBtnTrain = UITool.FindChild<Button>(mRootUI, "BtnTrain");
+        mTrainText = UITool.FindChild<Text>(mRootUI, "TrainText");
         mBtnTrainCancel = UITool.FindChild<Button>(mRootUI, "BtnTrainCancel");
 
         AddListeners();
@@ -65,7 +67,7 @@ public class CampInfoUI : IBaseUI
 
         mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
         mCampName.text = camp.Name;
-
+        
         ShowCampLv(camp.Lv);
 
         ShowWeaponLv(camp.weaponType);
@@ -98,6 +100,7 @@ public class CampInfoUI : IBaseUI
     private void ShowCampLv(int lv)
     {
         mCampLv.text = mCamp.Lv.ToString();
+        mTrainText.text = "训练\n" + mCamp.EnergyCostTrain + "点能量";
     }
 
     /// <summary>
@@ -131,7 +134,7 @@ public class CampInfoUI : IBaseUI
         }
         else
         {
-            mFacade.ShowMessage("能量不足，无法训练新的士兵！");
+            mFacade.ShowMessage("训练需要能量："+energy+"点，能量不足，无法训练新的士兵！");
         }
        
        
@@ -142,6 +145,7 @@ public class CampInfoUI : IBaseUI
     {
        
         mFacade.RecycleEnergy(mCamp.EnergyCostTrain); //回收能量
+        mFacade.ShowMessage("取消训练，回收能量！");
         mCamp.TrainCancel();
     }
 
@@ -163,7 +167,7 @@ public class CampInfoUI : IBaseUI
         }
         else
         {
-            mFacade.ShowMessage("能量不足，请稍候进行升级兵营！");
+            mFacade.ShowMessage("升级兵营需要能量：" + energy + "点，能量不足，请稍候进行升级兵营！");
         }
 
         
@@ -187,7 +191,7 @@ public class CampInfoUI : IBaseUI
         }
         else
         {
-            mFacade.ShowMessage("能量不足，请稍候进行升级武器！");
+            mFacade.ShowMessage("升级武器需要能量：" + energy + "点，能量不足，请稍候进行升级武器！");
         }
 
         

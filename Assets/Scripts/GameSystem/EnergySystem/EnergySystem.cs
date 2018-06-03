@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class EnergySystem : IGameSystem
 {
-    private const float MAX_Energy = 100f;
+    private const int MAX_Energy = 100;
 
     private float mNowEnergy = MAX_Energy;//当前能量
 
@@ -21,6 +21,7 @@ public class EnergySystem : IGameSystem
     public override void Update()
     {
         base.Update();
+        mFacade.UpdatEnerySlider((int)mNowEnergy, MAX_Energy); //更新能量slider
         if (mNowEnergy >= MAX_Energy) return;
         mNowEnergy += mRecoverSpeed * Time.deltaTime; //恢复能量
         mNowEnergy = Mathf.Min(mNowEnergy, MAX_Energy);

@@ -60,14 +60,14 @@ public class GameStateInfoUI : IBaseUI
     public override void Update()
     {
         base.Update();
-        UpdateMessage();
+        UpdateMessageTimer();
        
     }
 
     /// <summary>
-    /// 更新显示消息
+    /// 更新显示消息计时器
     /// </summary>
-    private void UpdateMessage()
+    private void UpdateMessageTimer()
     {
         if (mMsgTimer > 0)
         {
@@ -79,9 +79,26 @@ public class GameStateInfoUI : IBaseUI
         }
     }
 
+    /// <summary>
+    /// 更新能量slider
+    /// </summary>
+    /// <param name="nowEnergry"></param>
+    /// <param name="max_Energy"></param>
+    public void UpdataEnergySlider(int nowEnergry,int max_Energy)
+    {
+        mEnergySlider.value = nowEnergry / (float)max_Energy;
+        mEnergyNum.text = "(" + nowEnergry + "/" + max_Energy + ")";
+    }
+
+    /// <summary>
+    /// 显示消息
+    /// </summary>
+    /// <param name="msg"></param>
     public void Show(string msg)
     {
         mMessage.text = msg;
         mMsgTimer = mMsgTime;
     }
+
+   
 }

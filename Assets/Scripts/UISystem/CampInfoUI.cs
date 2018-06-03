@@ -124,14 +124,24 @@ public class CampInfoUI : IBaseUI
     private void OnTrainClick()
     {
         //消耗能量,判断能量是否足够
-        mCamp.Train();
+        int energy = mCamp.EnergyCostTrain;
+        if(mFacade.TakeEnergy(energy))
+        {
+            mCamp.Train();
+        }
+        else
+        {
+            mFacade.ShowMessage("能量不足，无法训练新的士兵！");
+        }
+       
        
     }
      
     //取消训练
     private void OnTrainCancelClick()
     {
-        //回收能量
+       
+        mFacade.RecycleEnergy(mCamp.EnergyCostTrain); //回收能量
         mCamp.TrainCancel();
     }
 
@@ -142,12 +152,21 @@ public class CampInfoUI : IBaseUI
         if(energy<0)
         {
             //TODO提示等级达到最大
+            mFacade.ShowMessage("兵营已到最大等级，无法升级！");
             return;
         }
         //TODO 消耗能量,判断能量是否够
+        if(mFacade.TakeEnergy(energy))
+        {
+            mCamp.CampUpLv();//升级兵营
+            ShowCampLv(mCamp.Lv);//更新UI
+        }
+        else
+        {
+            mFacade.ShowMessage("能量不足，请稍候进行升级兵营！");
+        }
 
-        mCamp.CampUpLv();//升级兵营
-        ShowCampLv(mCamp.Lv);
+        
     }
 
     //武器升级
@@ -157,12 +176,21 @@ public class CampInfoUI : IBaseUI
         if (energy < 0)
         {
             //TODO提示等级达到最大
+            mFacade.ShowMessage("武器已到最大等级，无法再进行升级！");
             return;
         }
         //TODO 消耗能量,判断能量是否够
+        if(mFacade.TakeEnergy(energy))
+        {
+            mCamp.WeaponUpLv();//升级武器
+            ShowWeaponLv(mCamp.weaponType);//更新UI
+        }
+        else
+        {
+            mFacade.ShowMessage("能量不足，请稍候进行升级武器！");
+        }
 
-        mCamp.WeaponUpLv();//升级兵营
-        ShowWeaponLv(mCamp.weaponType);
+        
     }
 
 

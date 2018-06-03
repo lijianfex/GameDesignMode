@@ -18,6 +18,8 @@ public class GameStateInfoUI : IBaseUI
 
     private GameObject mGameOver;//游戏结束页面
 
+    private float mMsgTimer = 0f;
+    private float mMsgTime = 3f;
 
 
 
@@ -44,6 +46,7 @@ public class GameStateInfoUI : IBaseUI
         mMessage = UITool.FindChild<Text>(mRootUI, "Message");
         mGameOver = UnityTool.FindChild(mRootUI, "GameOver");
 
+        mMessage.text = "";
         mGameOver.SetActive(false);
 
 
@@ -57,5 +60,28 @@ public class GameStateInfoUI : IBaseUI
     public override void Update()
     {
         base.Update();
+        UpdateMessage();
+       
+    }
+
+    /// <summary>
+    /// 更新显示消息
+    /// </summary>
+    private void UpdateMessage()
+    {
+        if (mMsgTimer > 0)
+        {
+            mMsgTimer -= Time.deltaTime;
+            if (mMsgTimer <= 0)
+            {
+                mMessage.text = "";
+            }
+        }
+    }
+
+    public void Show(string msg)
+    {
+        mMessage.text = msg;
+        mMsgTimer = mMsgTime;
     }
 }

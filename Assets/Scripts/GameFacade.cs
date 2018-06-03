@@ -115,4 +115,31 @@ public class GameFacade
     {
         mCharacterSystem.AddEnemy(enemy);
     }
+
+    /// <summary>
+    /// 能否取走能量
+    /// </summary>
+    /// <param name="value"></param>
+    public bool TakeEnergy(int value)
+    {
+        return mEnergySystem.TakeEnergy(value);
+    }
+
+    /// <summary>
+    /// 回收能量
+    /// </summary>
+    /// <param name="value"></param>
+    public void RecycleEnergy(int value)
+    {
+        mEnergySystem.RecycleEnergy(value);
+    }
+
+    /// <summary>
+    /// 显示提示信息
+    /// </summary>
+    /// <param name="msg"></param>
+    public void ShowMessage(string msg)
+    {
+        mGameStateInfoUI.Show(msg);
+    }
 }

@@ -31,6 +31,9 @@ public abstract class ICharacterBuilder
     //组装武器
     public abstract void AddWeapon();
 
+    //添加到角色系统
+    public abstract void AddCharacterSystem();
+
     //最终的角色
     public abstract ICharacter GetResult();
 }

@@ -80,14 +80,39 @@ public class GameFacade
         mSoldierInfoUI.Release();
     }
 
+    /// <summary>
+    /// 获取敌人目标点
+    /// </summary>
     public Vector3 GetEnemyTargetPosition()
     {
         //TODO
         return Vector3.zero;
     }
 
+    /// <summary>
+    /// 显示兵营UI
+    /// </summary>
+    /// <param name="camp"></param>
     public void ShowCampInfo(ICamp camp)
     {
         mCampInfoUI.ShowCampInfoUI(camp);
+    }
+
+    /// <summary>
+    /// 添加战士
+    /// </summary>
+    /// <param name="soldier"></param>
+    public void AddSoldier(ISoldier soldier)
+    {
+        mCharacterSystem.AddSoldier(soldier);
+    }
+
+    /// <summary>
+    /// 添加敌人
+    /// </summary>
+    /// <param name="enemy"></param>
+    public void AddEnemy(IEnemy enemy)
+    {
+        mCharacterSystem.AddEnemy(enemy);
     }
 }

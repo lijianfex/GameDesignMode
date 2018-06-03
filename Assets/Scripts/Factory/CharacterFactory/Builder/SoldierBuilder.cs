@@ -20,6 +20,8 @@ public class SoldierBuilder : ICharacterBuilder
         mCharacter.Attr = attr;
     }
 
+    
+
     public override void AddGameObject()
     {
 
@@ -35,6 +37,12 @@ public class SoldierBuilder : ICharacterBuilder
         //添加武器        
         IWeapon weapon = FactoryManager.GetWeaponFactory.CreatWeapon(mWeaponType,mWeapon);
         mCharacter.Weapon = weapon;
+    }
+
+    //添加到角色系统
+    public override void AddCharacterSystem()
+    {
+        GameFacade.Instance.AddSoldier(mCharacter as ISoldier);
     }
 
     public override ICharacter GetResult()

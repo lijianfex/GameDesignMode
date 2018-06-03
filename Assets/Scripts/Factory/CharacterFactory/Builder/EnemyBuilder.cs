@@ -19,6 +19,8 @@ public class EnemyBuilder : ICharacterBuilder
         mCharacter.Attr = attr;
     }
 
+    
+
     public override void AddGameObject()
     {
         //创建角色
@@ -34,6 +36,11 @@ public class EnemyBuilder : ICharacterBuilder
         IWeapon weapon = FactoryManager.GetWeaponFactory.CreatWeapon(mWeaponType,mWeapon);
         mCharacter.Weapon = weapon;
 
+    }
+
+    public override void AddCharacterSystem()
+    {
+        GameFacade.Instance.AddEnemy(mCharacter as IEnemy);
     }
 
     public override ICharacter GetResult()

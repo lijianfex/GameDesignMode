@@ -16,6 +16,8 @@ public abstract class ICharacter
 
     protected IWeapon mWeapon;              //角色所持有的武器
 
+
+
     //设置角色属性值
     public ICharacterAttr Attr { set { mAttr = value; } }
 
@@ -44,13 +46,27 @@ public abstract class ICharacter
         }
     }
 
-    public float AtkRange { get { return mWeapon.AtkRange; } }          //攻击距离
-    public float AtkColdTime { get { return mWeapon.AtkColdTime; } }    //攻击冷却时间
-   
+    public float AtkRange//攻击距离
+    {
+        get
+        {
+            if (mWeapon == null) return 1.0f;
+            return mWeapon.AtkRange;
+        }
+    }          
+    public float AtkColdTime//攻击冷却时间
+    {
+        get
+        {
+            if (mWeapon == null) return 1.0f;
+            return mWeapon.AtkColdTime;
+        }
+    }    
+
     /// <summary>
     /// 角色位置
     /// </summary>
-    public Vector3 Position  
+    public Vector3 Position
     {
         get
         {
@@ -98,7 +114,7 @@ public abstract class ICharacter
         PlayAnim("attack");
         target.UnderAttack(mWeapon.Atk + mAttr.CritValue);
     }
-    
+
     /// <summary>
     /// 被攻击
     /// </summary>
@@ -128,7 +144,7 @@ public abstract class ICharacter
     public void PlayAnim(string animName)
     {
         mAnim.CrossFade(animName);
-    }    
+    }
 
     /// <summary>
     /// 播放特效

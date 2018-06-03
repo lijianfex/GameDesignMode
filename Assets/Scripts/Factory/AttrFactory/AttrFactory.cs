@@ -27,7 +27,7 @@ public class AttrFactory : IAttrFactory
 
         mCharacterBaseAttrDict.Add(typeof(EnemyElf), new CharacterBaseAttr("小精灵", 100, 3f, "ElfIcon", "Enemy1", 0.2f));
         mCharacterBaseAttrDict.Add(typeof(EnemyOgre), new CharacterBaseAttr("怪物", 120, 2f, "OgreIcon", "Enemy2", 0.3f));
-        mCharacterBaseAttrDict.Add(typeof(EnemyOgre), new CharacterBaseAttr("巨魔", 140, 1f, "TrollIcon", "Enemy3", 0.4f));
+        mCharacterBaseAttrDict.Add(typeof(EnemyTroll), new CharacterBaseAttr("巨魔", 140, 1f, "TrollIcon", "Enemy3", 0.4f));
 
 
     }

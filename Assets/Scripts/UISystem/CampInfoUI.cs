@@ -20,7 +20,7 @@ public class CampInfoUI : IBaseUI
 
     private Button mBtnTrain;//训练按钮
     private Button mBtnTrainCancel; //取消训练
-
+    private ICamp mCamp;
 
     public override void Init()
     {
@@ -40,7 +40,15 @@ public class CampInfoUI : IBaseUI
         mBtnTrain = UITool.FindChild<Button>(mRootUI, "BtnTrain");
         mBtnTrainCancel = UITool.FindChild<Button>(mRootUI, "BtnTrainCancel");
 
+        AddListeners();
+
         Hide();
+    }
+
+    private void AddListeners()
+    {
+        mBtnTrain.onClick.AddListener(OnTrainClick);
+        mBtnTrainCancel.onClick.AddListener(OnTrainCancelClick);
     }
 
     /// <summary>
@@ -50,6 +58,7 @@ public class CampInfoUI : IBaseUI
     public void ShowCampInfoUI(ICamp camp)
     {
         Show();
+        mCamp = camp;
 
         mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
         mCampName.text = camp.Name;
@@ -77,14 +86,19 @@ public class CampInfoUI : IBaseUI
         }
     }
 
-    public override void Release()
+    //点击训练
+    private void OnTrainClick()
     {
-        base.Release();
+        //消耗能量,判断能量是否足够
+        mCamp.Train();
+       
     }
-
-    public override void Update()
+     
+    //取消训练
+    private void OnTrainCancelClick()
     {
-        base.Update();
+        //回收能量
+        mCamp.TrainCancel();
     }
 
 

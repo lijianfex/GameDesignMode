@@ -52,6 +52,7 @@ public class EnemyFSMSystem
             }
         }
         mStates.Add(state);
+
     }
 
     public void AddState(params IEnemyState[] states)

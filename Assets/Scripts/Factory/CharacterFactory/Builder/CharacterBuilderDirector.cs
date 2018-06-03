@@ -9,6 +9,7 @@ public class CharacterBuilderDirector
         builder.AddCharacterAttr();
         builder.AddGameObject();
         builder.AddWeapon();
+        builder.AddCharacterSystem();
         return builder.GetResult();
     }
 }

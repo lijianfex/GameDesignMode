@@ -17,6 +17,7 @@ public abstract class IEnemy:ICharacter
     /// <param name="targets"></param>
     public override void UpdateAIFSM(List<ICharacter> targets)
     {
+        if (mIsKilled) return;
         mEnemyFSMSystem.CurrentState.Reason(targets);
         mEnemyFSMSystem.CurrentState.Act(targets);        
     }

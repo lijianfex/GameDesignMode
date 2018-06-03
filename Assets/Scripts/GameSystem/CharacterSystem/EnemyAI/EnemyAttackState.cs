@@ -11,7 +11,7 @@ public class EnemyAttackState : IEnemyState
 
     public EnemyAttackState(EnemyFSMSystem fsm, ICharacter character) : base(fsm, character)
     {
-        mEnemyStateID = EnemyStateID.Chase;
+        mEnemyStateID = EnemyStateID.Attack;
         mAtkTimer = mCharacter.AtkColdTime;
     }
 

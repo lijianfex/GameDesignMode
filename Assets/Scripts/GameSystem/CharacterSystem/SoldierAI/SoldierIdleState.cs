@@ -15,7 +15,7 @@ public class SoldierIdleState : ISoldierState
 
     public override void Act(List<ICharacter> targets)
     {
-        mCharacter.PlayAnim("Stand");
+        mCharacter.PlayAnim("stand");
     }
 
     public override void Reason(List<ICharacter> targets)

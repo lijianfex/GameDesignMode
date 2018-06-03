@@ -16,7 +16,12 @@ public abstract class ICharacter
 
     protected IWeapon mWeapon;              //角色所持有的武器
 
+    protected bool mIsKilled=false; //是否死亡
+    protected bool mIsCanRemove = false;//是否可以移除
 
+    public bool CanDestrioy { get { return mIsCanRemove; } }
+
+    private float mDestroyTimer=2.0f;
 
     //设置角色属性值
     public ICharacterAttr Attr { set { mAttr = value; } }
@@ -50,7 +55,7 @@ public abstract class ICharacter
     {
         get
         {
-            if (mWeapon == null) return 1.0f;
+            if (mWeapon == null) return 3.0f;
             return mWeapon.AtkRange;
         }
     }          
@@ -90,6 +95,16 @@ public abstract class ICharacter
     /// </summary>
     public void Update()
     {
+       
+        if(mIsKilled)
+        {
+            mDestroyTimer -= Time.deltaTime;
+            if(mDestroyTimer<=0)
+            {
+                mIsCanRemove = true;
+            }
+            return;
+        }
         mWeapon.Update();
     }
 
@@ -134,6 +149,13 @@ public abstract class ICharacter
     public void Killed()
     {
         //TODO
+        mIsKilled = true;
+        mNavMeshAgent.isStopped=true;
+    }
+
+    public void Relase()
+    {
+        GameObject.Destroy(mGameObject);
     }
 
 
@@ -143,6 +165,7 @@ public abstract class ICharacter
     /// <param name="animName">动画名称</param>
     public void PlayAnim(string animName)
     {
+        if (mAnim==null) return;
         mAnim.CrossFade(animName);
     }
 

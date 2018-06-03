@@ -18,6 +18,13 @@ public enum SoldierType
     Captain
 }
 
+public enum EnemyType
+{
+    Elf,
+    Ogre,
+    Troll
+}
+
 public class CommoEnum
 {
 

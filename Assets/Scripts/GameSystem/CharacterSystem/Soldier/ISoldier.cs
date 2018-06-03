@@ -20,6 +20,7 @@ public abstract class ISoldier:ICharacter
     /// <param name="targets"></param>
     public override void UpdateAIFSM(List<ICharacter> targets)
     {
+        if (mIsKilled) return;
         mSoldierFSMSystem.CurrentState.Reason(targets);
         mSoldierFSMSystem.CurrentState.Act(targets);
     }

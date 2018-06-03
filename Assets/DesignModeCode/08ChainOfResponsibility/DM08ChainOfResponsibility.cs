@@ -13,8 +13,9 @@ public class DM08ChainOfResponsibility : MonoBehaviour
         IDMHander handerA = new DMHanderA();
         IDMHander handerB = new DMHanderB();
         IDMHander handerC = new DMHanderC();
-        handerA.NextHander = handerB;
-        handerB.NextHander = handerC;
+        //handerA.NextHander = handerB;
+        //handerB.NextHander = handerC;
+        handerA.SetNextHander(handerB).SetNextHander(handerC);
 
         handerA.Hander(problem);
 
@@ -32,6 +33,12 @@ public abstract class IDMHander
         {
             mNextHander = value;
         }
+    }
+
+    public IDMHander SetNextHander(IDMHander hander)
+    {
+        NextHander = hander;
+        return mNextHander;
     }
 
     public virtual void Hander(string problem) { }

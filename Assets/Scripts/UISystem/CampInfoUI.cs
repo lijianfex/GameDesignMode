@@ -64,6 +64,26 @@ public class CampInfoUI : IBaseUI
         mCampName.text = camp.Name;
         mCampLv.text = camp.Lv.ToString();
         ShowWeaponLv(camp.weaponType);
+
+        ShowTrainingInfo();
+
+    }
+
+    /// <summary>
+    /// 显示训练信息
+    /// </summary>
+    private void ShowTrainingInfo()
+    {
+        mTrainNum.text = mCamp.TrainNum.ToString();
+        mTrainTime.text = mCamp.TrainRemaingTime.ToString("0.00");
+        if (mCamp.TrainNum == 0)
+        {
+            mBtnTrainCancel.interactable = false;
+        }
+        else
+        {
+            mBtnTrainCancel.interactable = true;
+        }
     }
 
     /// <summary>
@@ -101,5 +121,21 @@ public class CampInfoUI : IBaseUI
         mCamp.TrainCancel();
     }
 
+    public override void Update()
+    {
+        base.Update();
+        UpdateTrainingInfo();
+        
+    }
 
+    /// <summary>
+    /// 更新训练信息
+    /// </summary>
+    private void UpdateTrainingInfo()
+    {
+        if (mCamp!=null)
+        {
+            ShowTrainingInfo();
+        }
+    }
 }

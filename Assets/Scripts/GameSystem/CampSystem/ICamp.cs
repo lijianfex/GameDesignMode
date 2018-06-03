@@ -25,6 +25,31 @@ public abstract class ICamp
     public abstract int Lv { get; }
     public abstract WeaponType weaponType { get; }
 
+    /// <summary>
+    /// 获取正在训练数
+    /// </summary>
+    /// <returns></returns>
+    public int TrainNum
+    {
+        get
+        {
+            if (mCommands == null) return 0;
+            return mCommands.Count;
+        }
+        
+    }
+
+    /// <summary>
+    /// 剩余训练时间
+    /// </summary>
+    /// <returns></returns>
+    public float TrainRemaingTime
+    {
+        get
+        {
+            return mTrainTimer;
+        }
+    }
 
     public ICamp(GameObject gameObject,string name,string icon,SoldierType soldierType,Vector3 position,float trainTime)
     {

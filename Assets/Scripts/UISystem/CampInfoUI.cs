@@ -49,6 +49,9 @@ public class CampInfoUI : IBaseUI
     {
         mBtnTrain.onClick.AddListener(OnTrainClick);
         mBtnTrainCancel.onClick.AddListener(OnTrainCancelClick);
+        mBtnCampUpLv.onClick.AddListener(OnCampUpLvClick);
+        mBtnWeaponUpLv.onClick.AddListener(OnWeaponUpLvClick);
+
     }
 
     /// <summary>
@@ -62,7 +65,9 @@ public class CampInfoUI : IBaseUI
 
         mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
         mCampName.text = camp.Name;
-        mCampLv.text = camp.Lv.ToString();
+
+        ShowCampLv(camp.Lv);
+
         ShowWeaponLv(camp.weaponType);
 
         ShowTrainingInfo();
@@ -84,6 +89,15 @@ public class CampInfoUI : IBaseUI
         {
             mBtnTrainCancel.interactable = true;
         }
+    }
+
+    /// <summary>
+    /// 显示兵营的等级
+    /// </summary>
+    /// <param name="lv"></param>
+    private void ShowCampLv(int lv)
+    {
+        mCampLv.text = mCamp.Lv.ToString();
     }
 
     /// <summary>
@@ -120,6 +134,37 @@ public class CampInfoUI : IBaseUI
         //回收能量
         mCamp.TrainCancel();
     }
+
+    //兵营升级
+    private void OnCampUpLvClick()
+    {
+        int energy = mCamp.EnergyCostCampUpLv;
+        if(energy<0)
+        {
+            //TODO提示等级达到最大
+            return;
+        }
+        //TODO 消耗能量,判断能量是否够
+
+        mCamp.CampUpLv();//升级兵营
+        ShowCampLv(mCamp.Lv);
+    }
+
+    //武器升级
+    private void OnWeaponUpLvClick()
+    {
+        int energy = mCamp.EnergyCostWeaponUpLv;
+        if (energy < 0)
+        {
+            //TODO提示等级达到最大
+            return;
+        }
+        //TODO 消耗能量,判断能量是否够
+
+        mCamp.WeaponUpLv();//升级兵营
+        ShowWeaponLv(mCamp.weaponType);
+    }
+
 
     public override void Update()
     {

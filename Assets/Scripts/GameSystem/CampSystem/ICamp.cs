@@ -20,10 +20,18 @@ public abstract class ICamp
 
     protected List<ITrainCommand> mCommands; //训练命令
 
+    protected IEnergyCostStrategy mEnergyCostStrategy;//能量消耗策略
+    protected int mEnergyCostCampUpLv;
+    protected int mEnergyCostWeaponUpLv;
+    protected int mEnergyCostTrain;
+
     public string Name { get { return mName; } }
     public string IconSprite { get { return mIconSprite; } }
     public abstract int Lv { get; }
     public abstract WeaponType weaponType { get; }
+    public abstract int EnergyCostCampUpLv { get; }
+    public abstract int EnergyCostWeaponUpLv { get; }
+    public abstract int EnergyCostTrain { get; }
 
     /// <summary>
     /// 获取正在训练数
@@ -85,6 +93,12 @@ public abstract class ICamp
 
     //训练
     public abstract void Train();
+    //兵营升级
+    public abstract void CampUpLv();
+    //武器升级
+    public abstract void WeaponUpLv();
+
+    protected abstract void UpdateEnergyCost();
 
     //取消最后的命令
     public void TrainCancel()

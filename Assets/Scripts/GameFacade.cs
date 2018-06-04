@@ -134,6 +134,11 @@ public class GameFacade
         mEnergySystem.RecycleEnergy(value);
     }
 
+    /// <summary>
+    /// 更新能量条
+    /// </summary>
+    /// <param name="nowEnergy"></param>
+    /// <param name="max_Energy"></param>
     public void UpdatEnerySlider(int nowEnergy,int max_Energy)
     {
         mGameStateInfoUI.UpdataEnergySlider(nowEnergy, max_Energy);
@@ -146,5 +151,34 @@ public class GameFacade
     public void ShowMessage(string msg)
     {
         mGameStateInfoUI.Show(msg);
+    }
+
+    /// <summary>
+    /// 注册事件
+    /// </summary>
+    /// <param name="gameEventType"></param>
+    /// <param name="eventObserver"></param>
+    public void RegisterObserver(GameEventType gameEventType, IGameEventObserver eventObserver)
+    {
+        mGameEventSystem.RegisterObserver(gameEventType, eventObserver);
+    }
+
+    /// <summary>
+    ///移除事件
+    /// </summary>
+    /// <param name="gameEventType"></param>
+    /// <param name="eventObserver"></param>
+    public void RemoveObserver(GameEventType gameEventType, IGameEventObserver eventObserver)
+    {
+        mGameEventSystem.RegisterObserver(gameEventType, eventObserver);
+    }
+
+    /// <summary>
+    /// 触发事件
+    /// </summary>
+    /// <param name="gameEventType"></param>
+    public void NotifySubject(GameEventType gameEventType)
+    {
+        mGameEventSystem.NotifySubject(gameEventType);
     }
 }

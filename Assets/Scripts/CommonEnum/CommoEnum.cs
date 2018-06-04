@@ -25,6 +25,14 @@ public enum EnemyType
     Troll
 }
 
+public enum GameEventType
+{
+    Null,
+    EnemyKilled,
+    SoldierKilled,
+    NewStage
+}
+
 public class CommoEnum
 {
 

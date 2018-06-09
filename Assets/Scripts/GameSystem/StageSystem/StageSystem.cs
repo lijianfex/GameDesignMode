@@ -71,12 +71,12 @@ public class StageSystem : IGameSystem
         NormalStageHander hander1 = new NormalStageHander(this, lv++, 3, EnemyType.Elf, WeaponType.Gun, 3,GetRandomPos());
         NormalStageHander hander2 = new NormalStageHander(this, lv++, 6, EnemyType.Elf, WeaponType.Gun, 3, GetRandomPos());
         NormalStageHander hander3 = new NormalStageHander(this, lv++, 9, EnemyType.Elf, WeaponType.Gun, 3, GetRandomPos());
-        NormalStageHander hander4 = new NormalStageHander(this, lv++, 14, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
-        NormalStageHander hander5 = new NormalStageHander(this, lv++, 18, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
-        NormalStageHander hander6 = new NormalStageHander(this, lv++, 22, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
-        NormalStageHander hander7 = new NormalStageHander(this, lv++, 27, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
-        NormalStageHander hander8 = new NormalStageHander(this, lv++, 32, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
-        NormalStageHander hander9 = new NormalStageHander(this, lv++, 37, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
+        NormalStageHander hander4 = new NormalStageHander(this, lv++, 13, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
+        NormalStageHander hander5 = new NormalStageHander(this, lv++, 17, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
+        NormalStageHander hander6 = new NormalStageHander(this, lv++, 21, EnemyType.Ogre, WeaponType.Gun, 4, GetRandomPos());
+        NormalStageHander hander7 = new NormalStageHander(this, lv++, 26, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
+        NormalStageHander hander8 = new NormalStageHander(this, lv++, 31, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
+        NormalStageHander hander9 = new NormalStageHander(this, lv++, 36, EnemyType.Troll, WeaponType.Gun, 5, GetRandomPos());
 
         hander1.SetNextHander(hander2)
             .SetNextHander(hander3)
@@ -107,7 +107,7 @@ public class StageSystem : IGameSystem
     public int GetCountOfEnemyKilled()
     {
         //TODO
-        return 0;
+        return mCountOfEnemyKilled;
     }
 
     

@@ -53,6 +53,7 @@ public abstract class ISoldier:ICharacter
     /// <param name="damage"></param>
     public override void UnderAttack(int damage)
     {
+        if (mIsKilled) return;
         base.UnderAttack(damage);        
         if (mAttr.CurrentHP <= 0)
         {

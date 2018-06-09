@@ -44,6 +44,7 @@ public abstract class IEnemy:ICharacter
     /// <param name="damage"></param>
     public override void UnderAttack(int damage)
     {
+        if (mIsKilled) return;
         base.UnderAttack(damage);
         PlayEffect();//播放敌人被攻击的特效
         if(mAttr.CurrentHP<=0)

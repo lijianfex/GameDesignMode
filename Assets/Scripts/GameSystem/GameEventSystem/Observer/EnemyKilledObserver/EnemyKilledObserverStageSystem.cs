@@ -16,12 +16,12 @@ public class EnemyKilledObserverStageSystem : IGameEventObserver
 
     public override void Update()
     {
-        mStageSystem.CountOfEnemykilled = mSubject.KilledCount;
+        mStageSystem.CountOfEnemykilled = mSubject.KilledCount;       
     }
 
     public override void SetSubject(IGameEventSubject eventSubject)
     {
-        throw new System.NotImplementedException();
+        mSubject = eventSubject as EnemyKilledSubject;
     }
 
     

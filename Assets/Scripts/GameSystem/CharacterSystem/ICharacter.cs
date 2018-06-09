@@ -136,6 +136,7 @@ public abstract class ICharacter
     /// <param name="damage"></param>
     public virtual void UnderAttack(int damage)
     {
+        if (mIsKilled) return;
         mAttr.TakeDamage(damage);
 
         //被攻击的视效 只有敌人有

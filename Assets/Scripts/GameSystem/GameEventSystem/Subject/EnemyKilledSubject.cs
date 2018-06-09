@@ -15,6 +15,6 @@ public class EnemyKilledSubject : IGameEventSubject
     public override void Notify()
     {
         mKilledCount++;
-        base.Notify();
+        base.Notify();       
     }
 }

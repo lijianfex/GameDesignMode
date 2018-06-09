@@ -146,7 +146,7 @@ public abstract class ICharacter
     /// <summary>
     /// 死亡
     /// </summary>
-    public void Killed()
+    public virtual void Killed()
     {
         //TODO
         mIsKilled = true;

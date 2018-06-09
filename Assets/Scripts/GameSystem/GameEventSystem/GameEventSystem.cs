@@ -12,15 +12,15 @@ public class GameEventSystem : IGameSystem
     public override void Init()
     {
         base.Init();
-        InitGameEvents();
+        //InitGameEvents();
     }
 
-    private void InitGameEvents()
-    {
-        mGameEvents.Add(GameEventType.EnemyKilled, new EnemyKilledSubject());
-        mGameEvents.Add(GameEventType.SoldierKilled, new SoldierKilledSubject());
-        mGameEvents.Add(GameEventType.NewStage, new NewStageSubject());
-    }
+    //private void InitGameEvents()
+    //{
+    //    mGameEvents.Add(GameEventType.EnemyKilled, new EnemyKilledSubject());
+    //    mGameEvents.Add(GameEventType.SoldierKilled, new SoldierKilledSubject());
+    //    mGameEvents.Add(GameEventType.NewStage, new NewStageSubject());
+    //}
 
     //注册
     public void RegisterObserver(GameEventType gameEventType,IGameEventObserver eventObserver)
@@ -45,8 +45,22 @@ public class GameEventSystem : IGameSystem
     {
         if (mGameEvents.ContainsKey(gameEventType) == false)
         {
-            Debug.LogError("没有对应事件类型：" + gameEventType + "的主题");
-            return null;
+            switch (gameEventType)
+            {
+                
+                case GameEventType.EnemyKilled:
+                    mGameEvents.Add(GameEventType.EnemyKilled, new EnemyKilledSubject());
+                    break;
+                case GameEventType.SoldierKilled:
+                    mGameEvents.Add(GameEventType.SoldierKilled, new SoldierKilledSubject());
+                    break;
+                case GameEventType.NewStage:
+                    mGameEvents.Add(GameEventType.NewStage, new NewStageSubject());
+                    break;
+                default:
+                    Debug.LogError("没有对应事件类型：" + gameEventType + "的主题"); return null;
+            }           
+            
         }
         return mGameEvents[gameEventType];
     }

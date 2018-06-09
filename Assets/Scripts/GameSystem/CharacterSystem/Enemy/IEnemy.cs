@@ -52,6 +52,11 @@ public abstract class IEnemy:ICharacter
         }
     }
 
+    public override void Killed()
+    {
+        base.Killed();
+        GameFacade.Instance.NotifySubject(GameEventType.EnemyKilled);
+    } 
     /// <summary>
     /// 播放特效
     /// </summary>

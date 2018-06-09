@@ -10,7 +10,7 @@ public class EnemyKilledSubject : IGameEventSubject
 {
     private int mKilledCount=0;
 
-    public int KillEdCount { get { return mKilledCount; } }
+    public int KilledCount { get { return mKilledCount; } }
 
     public override void Notify()
     {

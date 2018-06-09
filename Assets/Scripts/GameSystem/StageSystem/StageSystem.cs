@@ -12,6 +12,10 @@ public class StageSystem : IGameSystem
 
     private IStageHander mRootHander;
 
+    private int mCountOfEnemyKilled = 0; //敌人的死亡数
+
+    public int CountOfEnemykilled { set { mCountOfEnemyKilled = value; } }
+
     public Vector3 TargetPosition { get { return mTargetPosition; } }
 
     public override void Init()
@@ -19,6 +23,7 @@ public class StageSystem : IGameSystem
         base.Init();
         InitPositon();
         InitStageChain();
+        mFacade.RegisterObserver(GameEventType.EnemyKilled, new EnemyKilledObserverStageSystem(this));
 
     }
 
@@ -95,12 +100,17 @@ public class StageSystem : IGameSystem
         mRootHander.Hander(mLv);
     }
 
-
+    /// <summary>
+    /// 得到死亡的敌人的数量，去判断是否进入下一关
+    /// </summary>
+    /// <returns></returns>
     public int GetCountOfEnemyKilled()
     {
         //TODO
         return 0;
     }
+
+    
 
     public void EnterNextStage()
     {

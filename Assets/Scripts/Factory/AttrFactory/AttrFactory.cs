@@ -35,9 +35,9 @@ public class AttrFactory : IAttrFactory
     private void InitWeaponBaseAttr()
     {
         mWeaponBaseAttrDict = new Dictionary<WeaponType, WeaponBaseAttr>();
-        mWeaponBaseAttrDict.Add(WeaponType.Gun, new WeaponBaseAttr("短枪", 20, 5f, 1f, 0.5f, "WeaponGun"));
-        mWeaponBaseAttrDict.Add(WeaponType.Rifle, new WeaponBaseAttr("步枪", 30, 7f, 1.5f,1.0f, "WeaponRifle"));
-        mWeaponBaseAttrDict.Add(WeaponType.Rocket, new WeaponBaseAttr("火枪", 40, 8f, 2.0f, 1.0f, "WeaponRocket"));
+        mWeaponBaseAttrDict.Add(WeaponType.Gun, new WeaponBaseAttr("短枪", 20, 7f, 1f, 0.5f, "WeaponGun"));
+        mWeaponBaseAttrDict.Add(WeaponType.Rifle, new WeaponBaseAttr("步枪", 30, 9f, 1.5f,1.0f, "WeaponRifle"));
+        mWeaponBaseAttrDict.Add(WeaponType.Rocket, new WeaponBaseAttr("火枪", 40, 10f, 2.0f, 1.0f, "WeaponRocket"));
 
     }
 

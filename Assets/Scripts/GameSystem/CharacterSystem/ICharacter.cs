@@ -21,7 +21,7 @@ public abstract class ICharacter
 
     public bool CanDestrioy { get { return mIsCanRemove; } }
 
-    private float mDestroyTimer=2.0f;
+    private float mDestroyTimer=1.0f;
 
     //设置角色属性值
     public ICharacterAttr Attr { set { mAttr = value; } }

@@ -63,6 +63,12 @@ public abstract class ISoldier:ICharacter
         }
     }
 
+    public override void Killed()
+    {
+        base.Killed();
+        GameFacade.Instance.NotifySubject(GameEventType.SoldierKilled);
+    }
+
     /// <summary>
     /// 播放特效
     /// </summary>

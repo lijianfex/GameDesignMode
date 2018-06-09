@@ -116,6 +116,7 @@ public class StageSystem : IGameSystem
     {
         //TODO
         mLv++;
+        mFacade.NotifySubject(GameEventType.NewStage);
     }
 
    

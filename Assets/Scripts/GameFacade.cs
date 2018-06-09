@@ -22,6 +22,7 @@ public class GameFacade
     private EnergySystem mEnergySystem;
     private GameEventSystem mGameEventSystem;
     private StageSystem mStageSystem;
+    private AchievementSystem mArchievementSystem;
 
     private CampInfoUI mCampInfoUI;
     private GamePauseUI mGamePauseUI;
@@ -35,6 +36,7 @@ public class GameFacade
         mEnergySystem = new EnergySystem();
         mGameEventSystem = new GameEventSystem();
         mStageSystem = new StageSystem();
+        mArchievementSystem = new AchievementSystem();
 
         mCampInfoUI = new CampInfoUI();
         mGamePauseUI = new GamePauseUI();
@@ -46,6 +48,7 @@ public class GameFacade
         mEnergySystem.Init();
         mGameEventSystem.Init();
         mStageSystem.Init();
+        mArchievementSystem.Init();
 
         mCampInfoUI.Init();
         mGamePauseUI.Init();
@@ -59,6 +62,7 @@ public class GameFacade
         mEnergySystem.Update();
         mGameEventSystem.Update();
         mStageSystem.Update();
+        mArchievementSystem.Update();
 
         mCampInfoUI.Update();
         mGamePauseUI.Update();
@@ -73,6 +77,7 @@ public class GameFacade
         mEnergySystem.Release();
         mGameEventSystem.Release();
         mStageSystem.Release();
+        mArchievementSystem.Release();
 
         mCampInfoUI.Release();
         mGamePauseUI.Release();

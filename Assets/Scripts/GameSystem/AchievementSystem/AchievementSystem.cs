@@ -26,7 +26,7 @@ public class AchievementSystem : IGameSystem
     public void AddEnemyKilledCount(int number=1)
     {
         mEnemyKilledCount += number;
-        Debug.Log("敌人死亡:" + mEnemyKilledCount);
+        //Debug.Log("敌人死亡:" + mEnemyKilledCount);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class AchievementSystem : IGameSystem
     public void AddSoldierKilledCount(int number=1)
     {
         mSoldierKilledCount += number;
-        Debug.Log("战士死亡:" + mSoldierKilledCount);
+        //Debug.Log("战士死亡:" + mSoldierKilledCount);
 
     }
 
@@ -50,6 +50,22 @@ public class AchievementSystem : IGameSystem
         {
             mMaxStageLv = stageLv;
         }
-        Debug.Log("最大关卡:" + mMaxStageLv);
+        //Debug.Log("最大关卡:" + mMaxStageLv);
+    }
+
+    public AchievementMemento CreatMemento()
+    {
+        AchievementMemento memento = new AchievementMemento();
+        memento.EnemyKilledCount = mEnemyKilledCount;
+        memento.SoldierKilledCount = mSoldierKilledCount;
+        memento.MaxStageLv = mMaxStageLv;
+        return memento;
+    }
+
+    public void SetMemento(AchievementMemento memento)
+    {
+        mEnemyKilledCount = memento.EnemyKilledCount;
+        mSoldierKilledCount = memento.SoldierKilledCount;
+        mMaxStageLv = memento.MaxStageLv;
     }
 }

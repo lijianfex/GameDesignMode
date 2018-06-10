@@ -54,6 +54,8 @@ public class GameFacade
         mGamePauseUI.Init();
         mGameStateInfoUI.Init();
         mSoldierInfoUI.Init();
+
+        LoadMemento();//加载快照数据
     }
     public void Update()
     {
@@ -83,6 +85,8 @@ public class GameFacade
         mGamePauseUI.Release();
         mGameStateInfoUI.Release();
         mSoldierInfoUI.Release();
+
+        CreatMemento();//创建快照
     }
 
     /// <summary>
@@ -185,5 +189,24 @@ public class GameFacade
     public void NotifySubject(GameEventType gameEventType)
     {
         mGameEventSystem.NotifySubject(gameEventType);
+    }
+
+    /// <summary>
+    /// 创建快照
+    /// </summary>
+    public void LoadMemento()
+    {
+        AchievementMemento memento = new AchievementMemento();
+        memento.LoadData();
+        mArchievementSystem.SetMemento(memento);
+    }
+
+    /// <summary>
+    /// 恢复快照
+    /// </summary>
+    public void CreatMemento()
+    {
+        AchievementMemento memento = mArchievementSystem.CreatMemento();
+        memento.SaveData();
     }
 }

@@ -19,7 +19,9 @@ public class ICharacterAttr
     protected int mDmgDesValue; //抵御的伤害值
     public int CritValue { get { return mStrategy.GetCritDmg(mCharacterBaseAttr.CriRate); } }//暴击增加的伤害
 
+    public IAttrStrategy Strategy { get { return mStrategy; } }
 
+    public CharacterBaseAttr CharacterBaseAttr { get { return mCharacterBaseAttr; } }
 
     public ICharacterAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr)
     {

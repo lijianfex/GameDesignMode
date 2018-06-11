@@ -8,7 +8,7 @@ using UnityEngine;
 public class NormalStageHander : IStageHander
 {
     private EnemyType mEnemyType;
-    private WeaponType mWeaponTye;
+    private WeaponType mWeaponType;
     private int mCount; //敌人数量
     private Vector3 mPosition; //生成位置
 
@@ -18,10 +18,10 @@ public class NormalStageHander : IStageHander
 
     
 
-    public NormalStageHander(StageSystem stageSystem ,int lv, int countToFinished, EnemyType enemyType, WeaponType weaponTye, int count, Vector3 position):base( stageSystem,lv,countToFinished)
+    public NormalStageHander(StageSystem stageSystem ,int lv, int countToFinished, EnemyType enemyType, WeaponType weaponType, int count, Vector3 position):base( stageSystem,lv,countToFinished)
     {
         mEnemyType = enemyType;
-        mWeaponTye = weaponTye;
+        mWeaponType = weaponType;
         mCount = count;
         mPosition = position;
         mSpawnTimer = mSpawnTime;
@@ -41,11 +41,14 @@ public class NormalStageHander : IStageHander
         }
     }
 
+    /// <summary>
+    /// 产生敌人
+    /// </summary>
     private void SpawnEnemy()
     {
         mCountSpawn++;
         IWeapon weapon = null;
-        switch (mWeaponTye)
+        switch (mWeaponType)
         {
             case WeaponType.Gun:
                 weapon = new WeaponGun();
@@ -57,19 +60,19 @@ public class NormalStageHander : IStageHander
                 weapon = new WeaponRocket();
                 break;
             default:
-                Debug.LogError("无法创建武器类型："+ mWeaponTye);
+                Debug.LogError("无法创建武器类型："+ mWeaponType);
                 break;
         }
         switch (mEnemyType)
         {
             case EnemyType.Elf:
-                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyElf>(mWeaponTye,weapon,mPosition);
+                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyElf>(mWeaponType, weapon,mPosition);
                 break;
             case EnemyType.Ogre:
-                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyOgre>(mWeaponTye, weapon, mPosition);
+                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyOgre>(mWeaponType, weapon, mPosition);
                 break;
             case EnemyType.Troll:
-                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyTroll>(mWeaponTye, weapon, mPosition);
+                FactoryManager.GetEnemyFactory.CreatCharacter<EnemyTroll>(mWeaponType, weapon, mPosition);
                 break;
             default:
                 Debug.LogError("无法创建敌人类型："+mEnemyType);

@@ -94,7 +94,7 @@ public class GameFacade
     /// </summary>
     public Vector3 GetEnemyTargetPosition()
     {
-        //TODO
+        
         return mStageSystem.TargetPosition;
     }
 
@@ -123,6 +123,15 @@ public class GameFacade
     public void AddEnemy(IEnemy enemy)
     {
         mCharacterSystem.AddEnemy(enemy);
+    }
+
+    /// <summary>
+    /// 从敌人移除
+    /// </summary>
+    /// <param name="enemy"></param>
+    public void RemoveEnemy(IEnemy enemy)
+    {
+        mCharacterSystem.RemoveEnemy(enemy);
     }
 
     /// <summary>

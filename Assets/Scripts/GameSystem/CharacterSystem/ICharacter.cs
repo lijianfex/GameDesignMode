@@ -25,7 +25,7 @@ public abstract class ICharacter
     private float mDestroyTimer=1.0f;
 
     //设置角色属性值
-    public ICharacterAttr Attr { set { mAttr = value; } }
+    public ICharacterAttr Attr { set { mAttr = value; } get { return mAttr; } }
 
     //设置人物相关
     public GameObject GameObject
@@ -36,6 +36,10 @@ public abstract class ICharacter
             mNavMeshAgent = mGameObject.GetComponent<NavMeshAgent>();
             mAudioSource = mGameObject.GetComponent<AudioSource>();
             mAnim = mGameObject.GetComponentInChildren<Animation>();
+        }
+        get
+        {
+            return mGameObject;
         }
     }
 
@@ -49,6 +53,10 @@ public abstract class ICharacter
             //TODO 将武器设置到手上
             GameObject anchor = UnityTool.FindChild(mGameObject, "weapon-point");
             UnityTool.AttachChild(anchor, mWeapon.GameObject);
+        }
+        get
+        {
+            return mWeapon;
         }
     }
 

@@ -37,6 +37,9 @@ public class CharacterSystem : IGameSystem
     }
 
 
+    /// <summary>
+    /// 更新
+    /// </summary>
     public override void Update()
     {
         UpdateEnemy();
@@ -72,6 +75,10 @@ public class CharacterSystem : IGameSystem
         }
     }
 
+    /// <summary>
+    /// 移除死亡角色
+    /// </summary>
+    /// <param name="characters"></param>
     private void RemoveCharacterIsKilled(List<ICharacter> characters)
     {
         List<ICharacter> canDestroy = new List<ICharacter>();
@@ -86,6 +93,22 @@ public class CharacterSystem : IGameSystem
         {
             c.Relase();
             characters.Remove(c);
+        }
+    }
+
+    /// <summary>
+    ///运行角色访问器
+    /// </summary>
+    /// <param name="characterVisitor"></param>
+    public void RunVisitor(ICharacterVisitor characterVisitor)
+    {
+        foreach(ICharacter e in mEnemys)
+        {
+            e.RunVisitor(characterVisitor);
+        }
+        foreach(ICharacter s in mSoldiers )
+        {
+            s.RunVisitor(characterVisitor);
         }
     }
 }

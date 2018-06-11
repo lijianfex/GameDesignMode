@@ -62,6 +62,9 @@ public abstract class IEnemy:ICharacter
     /// 播放特效
     /// </summary>
     protected abstract void PlayEffect();
-    
-   
+
+    public override void RunVisitor(ICharacterVisitor characterVisitor)
+    {
+        characterVisitor.VisitorEnemy(this);
+    }
 }

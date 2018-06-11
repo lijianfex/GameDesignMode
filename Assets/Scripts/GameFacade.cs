@@ -209,4 +209,13 @@ public class GameFacade
         AchievementMemento memento = mArchievementSystem.CreatMemento();
         memento.SaveData();
     }
+
+    /// <summary>
+    /// 角色访问器
+    /// </summary>
+    /// <param name="visitor"></param>
+    public void RunVisitor(ICharacterVisitor visitor)
+    {
+        mCharacterSystem.RunVisitor(visitor);
+    }
 }

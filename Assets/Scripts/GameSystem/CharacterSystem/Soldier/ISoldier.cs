@@ -77,4 +77,9 @@ public abstract class ISoldier:ICharacter
     /// 播放声音
     /// </summary>
     protected abstract void PlaySound();
+
+    public override void RunVisitor(ICharacterVisitor characterVisitor)
+    {
+        characterVisitor.VisitorSoldier(this);
+    }
 }

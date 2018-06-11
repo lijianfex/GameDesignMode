@@ -21,6 +21,7 @@ public class GameStateInfoUI : IBaseUI
     private float mMsgTimer = 0f;
     private float mMsgTime = 3f;
 
+    private AliveCountVisitor countVisitor = new AliveCountVisitor();
 
 
     public override void Init()
@@ -61,7 +62,7 @@ public class GameStateInfoUI : IBaseUI
     {
         base.Update();
         UpdateMessageTimer();
-       
+        UpdateAliveCount();
     }
 
     /// <summary>
@@ -77,6 +78,17 @@ public class GameStateInfoUI : IBaseUI
                 mMessage.text = "";
             }
         }
+    }
+
+    /// <summary>
+    /// 更新显示角色存活数
+    /// </summary>
+    private void UpdateAliveCount()
+    {
+        countVisitor.Reset();
+        mFacade.RunVisitor(countVisitor);
+        mSoldierNum.text = countVisitor.SoldierCount.ToString();
+        mEnergyNum.text = countVisitor.EnemyCount.ToString();
     }
 
     /// <summary>

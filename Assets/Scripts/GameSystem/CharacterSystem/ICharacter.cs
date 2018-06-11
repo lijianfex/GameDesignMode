@@ -19,6 +19,7 @@ public abstract class ICharacter
     protected bool mIsKilled=false; //是否死亡
     protected bool mIsCanRemove = false;//是否可以移除
 
+    public bool IsKilled { get { return mIsKilled; } }
     public bool CanDestrioy { get { return mIsCanRemove; } }
 
     private float mDestroyTimer=1.0f;
@@ -89,6 +90,9 @@ public abstract class ICharacter
     /// </summary>
     /// <param name="targets"></param>
     public abstract void UpdateAIFSM(List<ICharacter> targets);
+
+    public abstract void RunVisitor(ICharacterVisitor characterVisitor);
+
 
     /// <summary>
     /// 角色的相关组件的更新

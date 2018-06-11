@@ -37,7 +37,7 @@ public static class FactoryManager
         {
             if (mAssetFactory == null)
             {
-                mAssetFactory = new ResourcesFactory();
+                mAssetFactory = new ResourceAessetProxyFactory();
             }
             return mAssetFactory;
         }

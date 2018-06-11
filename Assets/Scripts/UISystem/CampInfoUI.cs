@@ -23,12 +23,14 @@ public class CampInfoUI : IBaseUI
     private Button mBtnTrainCancel; //取消训练
     private ICamp mCamp;
 
+    private AliveCountVisitor aliveCountVisitor = new AliveCountVisitor();
+
     public override void Init()
     {
         base.Init();
         GameObject canvas = GameObject.Find("Canvas");
-        mRootUI = UnityTool.FindChild(canvas,"CampInfoUI"); 
-        
+        mRootUI = UnityTool.FindChild(canvas, "CampInfoUI");
+
         mCampIcon = UITool.FindChild<Image>(mRootUI, "CampIcon");
         mCampName = UITool.FindChild<Text>(mRootUI, "CampName");
         mCampLv = UITool.FindChild<Text>(mRootUI, "CampLv");
@@ -67,9 +69,10 @@ public class CampInfoUI : IBaseUI
 
         mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
         mCampName.text = camp.Name;
+        ShowSodlierNumInfo(camp.SoldierType);
 
         isCanUpLv(camp.IsCaptiveCamp);
-        
+
         ShowCampLv(camp.Lv);
 
         ShowWeaponLv(camp.weaponType);
@@ -96,6 +99,30 @@ public class CampInfoUI : IBaseUI
     }
 
     /// <summary>
+    /// 显示战士存活数
+    /// </summary>
+    /// <param name="soldierType"></param>
+    private void ShowSodlierNumInfo(SoldierType soldierType)
+    {
+        aliveCountVisitor.Reset();
+        mFacade.RunVisitor(aliveCountVisitor);
+        switch (soldierType)
+        {
+            case SoldierType.Rookie:
+                mSoldierNum.text = aliveCountVisitor.RookieCount.ToString();
+                break;
+            case SoldierType.Sergeant:
+                mSoldierNum.text = aliveCountVisitor.SergeantCount.ToString();
+                break;
+            case SoldierType.Captain:
+                mSoldierNum.text = aliveCountVisitor.CaptainCount.ToString();
+                break;
+            case SoldierType.Captive:
+                mSoldierNum.text = aliveCountVisitor.CaptiveCount.ToString();
+                break;
+        }
+    }
+    /// <summary>
     /// 显示兵营的等级
     /// </summary>
     /// <param name="lv"></param>
@@ -121,7 +148,7 @@ public class CampInfoUI : IBaseUI
                 break;
             case WeaponType.Rocket:
                 mWeaponLv.text = "火枪";
-                break;            
+                break;
         }
     }
 
@@ -130,22 +157,22 @@ public class CampInfoUI : IBaseUI
     {
         //消耗能量,判断能量是否足够
         int energy = mCamp.EnergyCostTrain;
-        if(mFacade.TakeEnergy(energy))
+        if (mFacade.TakeEnergy(energy))
         {
             mCamp.Train();
         }
         else
         {
-            mFacade.ShowMessage("训练需要能量："+energy+"点，能量不足，无法训练新的士兵！");
+            mFacade.ShowMessage("训练需要能量：" + energy + "点，能量不足，无法训练新的士兵！");
         }
-       
-       
+
+
     }
-     
+
     //取消训练
     private void OnTrainCancelClick()
     {
-       
+
         mFacade.RecycleEnergy(mCamp.EnergyCostTrain); //回收能量
         mFacade.ShowMessage("取消训练，回收能量！");
         mCamp.TrainCancel();
@@ -155,14 +182,14 @@ public class CampInfoUI : IBaseUI
     private void OnCampUpLvClick()
     {
         int energy = mCamp.EnergyCostCampUpLv;
-        if(energy<0)
+        if (energy < 0)
         {
             //TODO提示等级达到最大
             mFacade.ShowMessage("兵营已到最大等级，无法升级！");
             return;
         }
         //TODO 消耗能量,判断能量是否够
-        if(mFacade.TakeEnergy(energy))
+        if (mFacade.TakeEnergy(energy))
         {
             mCamp.CampUpLv();//升级兵营
             ShowCampLv(mCamp.Lv);//更新UI
@@ -172,7 +199,7 @@ public class CampInfoUI : IBaseUI
             mFacade.ShowMessage("升级兵营需要能量：" + energy + "点，能量不足，请稍候进行升级兵营！");
         }
 
-        
+
     }
 
     //武器升级
@@ -186,7 +213,7 @@ public class CampInfoUI : IBaseUI
             return;
         }
         //TODO 消耗能量,判断能量是否够
-        if(mFacade.TakeEnergy(energy))
+        if (mFacade.TakeEnergy(energy))
         {
             mCamp.WeaponUpLv();//升级武器
             ShowWeaponLv(mCamp.weaponType);//更新UI
@@ -196,7 +223,7 @@ public class CampInfoUI : IBaseUI
             mFacade.ShowMessage("升级武器需要能量：" + energy + "点，能量不足，请稍候进行升级武器！");
         }
 
-        
+
     }
 
     /// <summary>
@@ -205,8 +232,8 @@ public class CampInfoUI : IBaseUI
     /// <param name="isCaptiveCamp"></param>
     private void isCanUpLv(bool isCaptiveCamp)
     {
-            mBtnCampUpLv.interactable = !isCaptiveCamp;
-            mBtnWeaponUpLv.interactable = !isCaptiveCamp;
+        mBtnCampUpLv.interactable = !isCaptiveCamp;
+        mBtnWeaponUpLv.interactable = !isCaptiveCamp;
     }
 
 
@@ -214,7 +241,12 @@ public class CampInfoUI : IBaseUI
     {
         base.Update();
         UpdateTrainingInfo();
-        
+        if (mCamp == null)
+        {
+            return;
+        }
+        ShowSodlierNumInfo(mCamp.SoldierType);
+
     }
 
     /// <summary>
@@ -222,9 +254,11 @@ public class CampInfoUI : IBaseUI
     /// </summary>
     private void UpdateTrainingInfo()
     {
-        if (mCamp!=null)
+        if (mCamp != null)
         {
             ShowTrainingInfo();
         }
     }
+
+   
 }

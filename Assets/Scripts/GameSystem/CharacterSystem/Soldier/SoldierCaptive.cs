@@ -22,6 +22,12 @@ public class SoldierCaptive : ISoldier
 
     }
 
+    public override void RunVisitor(ICharacterVisitor characterVisitor)
+    {
+        base.RunVisitor(characterVisitor);
+        characterVisitor.VisitorCaptive(this);
+    }
+
     protected override void PlayEffect()
     {
         

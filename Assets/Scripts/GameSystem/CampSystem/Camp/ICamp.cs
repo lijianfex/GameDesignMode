@@ -30,6 +30,7 @@ public abstract class ICamp
     public string Name { get { return mName; } }
     public string IconSprite { get { return mIconSprite; } }
     public bool IsCaptiveCamp { get { return mIsCaptiveCamp; } set { mIsCaptiveCamp = value; } }
+    public SoldierType SoldierType { get { return mSoldierType; } }
 
     public abstract int Lv { get; }
     public abstract WeaponType weaponType { get; }

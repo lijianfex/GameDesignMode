@@ -6,6 +6,12 @@ using UnityEngine;
 /// </summary>
 public class SoldierCaptain : ISoldier
 {
+    public override void RunVisitor(ICharacterVisitor characterVisitor)
+    {
+        base.RunVisitor(characterVisitor);
+        characterVisitor.VisitorCaptain(this);
+    }
+
     /// <summary>
     /// 上尉士兵死亡特效
     /// </summary>

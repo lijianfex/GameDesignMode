@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class ResourcesFactory : IAssetFactory
 {
-    private const string SoldierPath = "Characters/Soldier/";
-    private const string EnemyPath = "Characters/Enemy/";
-    private const string WeaponPath = "Weapons/";
-    private const string EffectPath = "Effects/";
-    private const string AudioPath = "Audios/";
-    private const string SpritePath = "Sprites/";
+    public const string SoldierPath = "Characters/Soldier/";
+    public const string EnemyPath = "Characters/Enemy/";
+    public const string WeaponPath = "Weapons/";
+    public const string EffectPath = "Effects/";
+    public const string AudioPath = "Audios/";
+    public const string SpritePath = "Sprites/";
 
     public GameObject LoadSoldier(string name)
     {
@@ -39,7 +39,7 @@ public class ResourcesFactory : IAssetFactory
     }
     public Sprite LoadSprite(string name)
     {
-        return Resources.Load(SpritePath + name,typeof(Sprite)) as Sprite;
+        return Resources.Load(SpritePath + name, typeof(Sprite)) as Sprite;
     }
 
 
@@ -51,9 +51,9 @@ public class ResourcesFactory : IAssetFactory
     private GameObject InstantiateGameObject(string path)
     {
         UnityEngine.Object o = Resources.Load(path);
-        if(o==null)
+        if (o == null)
         {
-            Debug.LogError("加载资源失败，路径："+path);
+            Debug.LogError("加载资源失败，路径：" + path);
             return null;
         }
         return UnityEngine.GameObject.Instantiate(o) as GameObject;
@@ -64,7 +64,7 @@ public class ResourcesFactory : IAssetFactory
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    private UnityEngine.Object LoadAsset(string path)
+    public UnityEngine.Object LoadAsset(string path)
     {
         UnityEngine.Object o = Resources.Load(path);
         if (o == null)

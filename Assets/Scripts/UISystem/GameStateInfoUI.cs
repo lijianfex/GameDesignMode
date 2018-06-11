@@ -23,6 +23,8 @@ public class GameStateInfoUI : IBaseUI
 
     private AliveCountVisitor countVisitor = new AliveCountVisitor();
 
+    public AliveCountVisitor CountVisitor { get { return countVisitor; } }
+
 
     public override void Init()
     {

@@ -22,7 +22,32 @@ public class GamePauseUI : IBaseUI
         mBtnContinue = UITool.FindChild<Button>(mRootUI, "BtnContinue");
         mBtnBackMain = UITool.FindChild<Button>(mRootUI, "BtnBackMain");
 
+        AddListeners();
+
         Hide();
+    }
+
+    private void AddListeners()
+    {
+        mBtnContinue.onClick.AddListener(OnContinueClick);
+        mBtnBackMain.onClick.AddListener(OnBackMainClick);
+    }
+
+    private void RemoveListeners()
+    {
+        mBtnContinue.onClick.RemoveListener(OnContinueClick);
+        mBtnBackMain.onClick.RemoveListener(OnBackMainClick);
+    }
+
+    private void OnContinueClick()
+    {
+        Time.timeScale = 1;
+        Hide();
+    }
+
+    private void OnBackMainClick()
+    {
+        mFacade.IsGameOver = true;
     }
 
     public void ShowGamePauseUI(int stageLv)
@@ -34,6 +59,9 @@ public class GamePauseUI : IBaseUI
     public override void Release()
     {
         base.Release();
+        RemoveListeners();
+        mFacade.IsGameOver = false;
+        Time.timeScale = 1;
     }
 
     public override void Update()

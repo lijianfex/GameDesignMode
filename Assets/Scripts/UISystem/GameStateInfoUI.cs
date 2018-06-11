@@ -88,7 +88,7 @@ public class GameStateInfoUI : IBaseUI
         countVisitor.Reset();
         mFacade.RunVisitor(countVisitor);
         mSoldierNum.text = countVisitor.SoldierCount.ToString();
-        mEnergyNum.text = countVisitor.EnemyCount.ToString();
+        mEnemyNum.text = countVisitor.EnemyCount.ToString();       
     }
 
     /// <summary>

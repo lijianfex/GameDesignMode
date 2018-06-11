@@ -9,7 +9,10 @@ public class DM12Adapter : MonoBehaviour
 {
     private void Start()
     {
+        //StanderInterface adapter = new StanderImpentA();
+
         Adapter adapter = new Adapter(new NewPlugin());
+
         StanderInterface s = adapter;
         s.Request();
     }

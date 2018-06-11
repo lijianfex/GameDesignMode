@@ -9,12 +9,15 @@ public class CampSystem : IGameSystem
 {
     private Dictionary<SoldierType, SoldierCamp> mSoldierCamps = new Dictionary<SoldierType, SoldierCamp>();
 
+    private Dictionary<EnemyType, CaptiveCamp> mCaptiveCamps = new Dictionary<EnemyType, CaptiveCamp>();
+
     public override void Init()
     {
         base.Init();
         InitCamp(SoldierType.Rookie);
         InitCamp(SoldierType.Sergeant);
         InitCamp(SoldierType.Captain);
+        InitCamp(EnemyType.Elf);
 
     }
 
@@ -68,6 +71,42 @@ public class CampSystem : IGameSystem
         mSoldierCamps.Add(soldierType, camp);
     }
 
+    private void InitCamp(EnemyType enemyType)
+    {
+
+        GameObject gameObject = null;
+        string gameObjectName = null;
+        string name = "";
+        string icon = "";
+        Vector3 position = Vector3.zero;
+        float trainTime = 0;
+        switch (enemyType)
+        {
+            case EnemyType.Elf:
+                gameObjectName = "CaptiveCamp_Elf";
+                name = "俘兵营";
+                icon = "CaptiveCamp";
+                trainTime = 3;
+                break;            
+            default:
+                Debug.LogError("无法根据敌人类型：" + enemyType + "初始化兵营");
+                break;
+        }
+        gameObject = GameObject.Find(gameObjectName);
+        GameObject gameObjectPos = UnityTool.FindChild(gameObject, "TrainPoint");
+        if (gameObjectPos != null)
+        {
+            position = gameObjectPos.transform.position;
+            gameObjectPos.SetActive(false);
+        }
+
+        CaptiveCamp camp = new CaptiveCamp(gameObject, name, icon, enemyType, position, trainTime);
+
+        gameObject.AddComponent<CampOnClick>().Camp = camp;//添加点击组件       
+
+        mCaptiveCamps.Add(enemyType, camp);
+    }
+
 
     /// <summary>
     /// 更新兵营
@@ -75,6 +114,10 @@ public class CampSystem : IGameSystem
     public override void Update()
     {
         foreach(SoldierCamp s in mSoldierCamps.Values)
+        {
+            s.Update();
+        }
+        foreach(CaptiveCamp s in mCaptiveCamps.Values)
         {
             s.Update();
         }

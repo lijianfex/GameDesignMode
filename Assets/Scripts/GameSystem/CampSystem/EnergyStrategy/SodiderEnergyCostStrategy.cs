@@ -46,6 +46,8 @@ public class SodiderEnergyCostStrategy : IEnergyCostStrategy
             case SoldierType.Captain:
                 energy = 20;
                 break;
+            case SoldierType.Captive:
+                return 10;
             default:
                 Debug.LogError("无法获取" + soldierType + "升级消耗的能量值");
                 break;

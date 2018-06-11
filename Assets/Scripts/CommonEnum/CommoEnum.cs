@@ -15,7 +15,8 @@ public enum SoldierType
 {
     Rookie,
     Sergeant,
-    Captain
+    Captain,
+    Captive
 }
 
 public enum EnemyType

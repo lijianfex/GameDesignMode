@@ -101,7 +101,7 @@ public class CampSystem : IGameSystem
         }
 
         CaptiveCamp camp = new CaptiveCamp(gameObject, name, icon, enemyType, position, trainTime);
-
+        camp.IsCaptiveCamp = true;
         gameObject.AddComponent<CampOnClick>().Camp = camp;//添加点击组件       
 
         mCaptiveCamps.Add(enemyType, camp);

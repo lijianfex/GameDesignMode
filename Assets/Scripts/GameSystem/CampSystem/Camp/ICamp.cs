@@ -18,6 +18,8 @@ public abstract class ICamp
 
     private float mTrainTimer = 0;
 
+    protected bool mIsCaptiveCamp = false;
+
     protected List<ITrainCommand> mCommands; //训练命令
 
     protected IEnergyCostStrategy mEnergyCostStrategy;//能量消耗策略
@@ -27,6 +29,8 @@ public abstract class ICamp
 
     public string Name { get { return mName; } }
     public string IconSprite { get { return mIconSprite; } }
+    public bool IsCaptiveCamp { get { return mIsCaptiveCamp; } set { mIsCaptiveCamp = value; } }
+
     public abstract int Lv { get; }
     public abstract WeaponType weaponType { get; }
     public abstract int EnergyCostCampUpLv { get; }

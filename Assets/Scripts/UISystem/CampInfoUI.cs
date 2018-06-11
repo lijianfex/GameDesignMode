@@ -67,6 +67,8 @@ public class CampInfoUI : IBaseUI
 
         mCampIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(camp.IconSprite);
         mCampName.text = camp.Name;
+
+        isCanUpLv(camp.IsCaptiveCamp);
         
         ShowCampLv(camp.Lv);
 
@@ -195,6 +197,16 @@ public class CampInfoUI : IBaseUI
         }
 
         
+    }
+
+    /// <summary>
+    /// 是否可以升级武器与兵营
+    /// </summary>
+    /// <param name="isCaptiveCamp"></param>
+    private void isCanUpLv(bool isCaptiveCamp)
+    {
+            mBtnCampUpLv.interactable = !isCaptiveCamp;
+            mBtnWeaponUpLv.interactable = !isCaptiveCamp;
     }
 
 

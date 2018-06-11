@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+///俘兵营
+/// </summary>
 public class CaptiveCamp : ICamp
 {
     

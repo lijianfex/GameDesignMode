@@ -240,11 +240,9 @@ public class CampInfoUI : IBaseUI
     public override void Update()
     {
         base.Update();
-        UpdateTrainingInfo();
-        if (mCamp == null)
-        {
-            return;
-        }
+        if (mCamp == null) return;
+
+        UpdateTrainingInfo();        
         ShowSodlierNumInfo(mCamp.SoldierType);
 
     }
@@ -254,10 +252,7 @@ public class CampInfoUI : IBaseUI
     /// </summary>
     private void UpdateTrainingInfo()
     {
-        if (mCamp != null)
-        {
             ShowTrainingInfo();
-        }
     }
 
    

@@ -108,6 +108,14 @@ public class GameFacade
     }
 
     /// <summary>
+    /// 显示暂停UI
+    /// </summary>
+    public void ShowGamePauseUI()
+    {
+        mGamePauseUI.ShowGamePauseUI(mStageSystem.Lv);
+    }
+
+    /// <summary>
     /// 添加战士
     /// </summary>
     /// <param name="soldier"></param>
@@ -201,7 +209,7 @@ public class GameFacade
     }
 
     /// <summary>
-    /// 创建快照
+    /// 恢复快照
     /// </summary>
     public void LoadMemento()
     {
@@ -211,7 +219,7 @@ public class GameFacade
     }
 
     /// <summary>
-    /// 恢复快照
+    /// 创建快照
     /// </summary>
     public void CreatMemento()
     {

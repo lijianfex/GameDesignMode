@@ -25,6 +25,12 @@ public class GamePauseUI : IBaseUI
         Hide();
     }
 
+    public void ShowGamePauseUI(int stageLv)
+    {
+        Show();
+        mCurrentStageNum.text = stageLv.ToString();
+    }
+
     public override void Release()
     {
         base.Release();

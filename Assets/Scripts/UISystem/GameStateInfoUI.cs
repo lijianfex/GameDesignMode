@@ -21,6 +21,8 @@ public class GameStateInfoUI : IBaseUI
     private float mMsgTimer = 0f;
     private float mMsgTime = 3f;
 
+    private int currentStageNum = 1;
+
     private AliveCountVisitor countVisitor = new AliveCountVisitor();
 
     public AliveCountVisitor CountVisitor { get { return countVisitor; } }
@@ -49,15 +51,25 @@ public class GameStateInfoUI : IBaseUI
         mMessage = UITool.FindChild<Text>(mRootUI, "Message");
         mGameOver = UnityTool.FindChild(mRootUI, "GameOver");
 
+        AddListeners();
+
         mMessage.text = "";
+        mStageNum.text = currentStageNum.ToString();
         mGameOver.SetActive(false);
 
 
     }
 
+    private void AddListeners()
+    {
+        mBtnPause.onClick.AddListener(OnPauseClick);
+        mFacade.RegisterObserver(GameEventType.NewStage, new NewStageObserverGameStateUI(this));
+    }
+
     public override void Release()
     {
         base.Release();
+        mFacade.RemoveObserver(GameEventType.NewStage, new NewStageObserverGameStateUI(this));
     }
 
     public override void Update()
@@ -66,6 +78,36 @@ public class GameStateInfoUI : IBaseUI
         UpdateMessageTimer();
         UpdateAliveCount();
     }
+
+    /// <summary>
+    /// 更新能量slider
+    /// </summary>
+    /// <param name="nowEnergry"></param>
+    /// <param name="max_Energy"></param>
+    public void UpdataEnergySlider(int nowEnergry, int max_Energy)
+    {
+        mEnergySlider.value = nowEnergry / (float)max_Energy;
+        mEnergyNum.text = "(" + nowEnergry + "/" + max_Energy + ")";
+    }
+
+    public void AddStageNum()
+    {
+        currentStageNum += 1;
+        mStageNum.text = currentStageNum.ToString();
+    }
+
+   
+
+    /// <summary>
+    /// 显示消息
+    /// </summary>
+    /// <param name="msg"></param>
+    public void Show(string msg)
+    {
+        mMessage.text = msg;
+        mMsgTimer = mMsgTime;
+    }
+
 
     /// <summary>
     /// 更新显示消息计时器
@@ -93,26 +135,19 @@ public class GameStateInfoUI : IBaseUI
         mEnemyNum.text = countVisitor.EnemyCount.ToString();       
     }
 
-    /// <summary>
-    /// 更新能量slider
-    /// </summary>
-    /// <param name="nowEnergry"></param>
-    /// <param name="max_Energy"></param>
-    public void UpdataEnergySlider(int nowEnergry,int max_Energy)
-    {
-        mEnergySlider.value = nowEnergry / (float)max_Energy;
-        mEnergyNum.text = "(" + nowEnergry + "/" + max_Energy + ")";
-    }
 
     /// <summary>
-    /// 显示消息
+    /// 暂停点击事件
     /// </summary>
-    /// <param name="msg"></param>
-    public void Show(string msg)
+    private void OnPauseClick()
     {
-        mMessage.text = msg;
-        mMsgTimer = mMsgTime;
+        Time.timeScale = 0;
+        mFacade.ShowGamePauseUI();
     }
+
+   
+    
+
 
    
 }

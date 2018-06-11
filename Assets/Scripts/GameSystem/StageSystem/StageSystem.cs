@@ -18,6 +18,8 @@ public class StageSystem : IGameSystem
 
     public Vector3 TargetPosition { get { return mTargetPosition; } }
 
+    public int Lv { get { return mLv; } }
+
     public override void Init()
     {
         base.Init();

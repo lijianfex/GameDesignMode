@@ -18,7 +18,13 @@ public class AchievementSystem : IGameSystem
         mFacade.RegisterObserver(GameEventType.SoldierKilled, new SoldierkilledObserverArchievement(this));
         mFacade.RegisterObserver(GameEventType.NewStage, new NewStageObserverArchievement(this));
     }
-
+    public override void Release()
+    {
+        base.Release();
+        mFacade.RemoveObserver(GameEventType.EnemyKilled, new EnemyKilledObserverArchievement(this));
+        mFacade.RemoveObserver(GameEventType.SoldierKilled, new SoldierkilledObserverArchievement(this));
+        mFacade.RemoveObserver(GameEventType.NewStage, new NewStageObserverArchievement(this));
+    }
     /// <summary>
     /// 增加死亡敌人
     /// </summary>

@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class NewStageSubject : IGameEventSubject
 {
-    private int mStageCount = 0;
+    private int mStageCount = 1;
     public int StageCount { get { return mStageCount; } }
 
     public override void Notify()

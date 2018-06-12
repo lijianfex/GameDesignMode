@@ -30,11 +30,12 @@ public class MainState : ISceneState
 
     private void OnExitClick()
     {
-        Application.Quit();
+        Application.Quit();        
     }
 
     public override void StateEnd()
     {
         BtnPaly.onClick.RemoveAllListeners();
+        BtnExit.onClick.RemoveAllListeners();
     }
 }

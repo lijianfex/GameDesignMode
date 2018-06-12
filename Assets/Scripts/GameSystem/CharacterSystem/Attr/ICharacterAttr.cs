@@ -23,6 +23,8 @@ public class ICharacterAttr
 
     public CharacterBaseAttr CharacterBaseAttr { get { return mCharacterBaseAttr; } }
 
+    public int Lv { get { return mLv; } }
+
     public ICharacterAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr)
     {
         mStrategy = strategy;

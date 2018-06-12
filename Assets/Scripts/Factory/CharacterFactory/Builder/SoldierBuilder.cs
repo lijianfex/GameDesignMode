@@ -47,6 +47,7 @@ public class SoldierBuilder : ICharacterBuilder
 
     public override ICharacter GetResult()
     {
+        mCharacter.GameObject.AddComponent<CharacterOnClik>().Character = mCharacter;
         return mCharacter;
     }
 }

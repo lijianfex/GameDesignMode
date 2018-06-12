@@ -19,7 +19,7 @@ public abstract class IBaseUI
         mRootUI.SetActive(true);
     }
 
-    protected void Hide()
+    public void Hide()
     {
         mRootUI.SetActive(false);
     }

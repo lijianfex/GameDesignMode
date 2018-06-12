@@ -7,9 +7,9 @@ using UnityEditor;
 public class TrainCaptiveCommand : ITrainCommand
 {
     private EnemyType mEnemyType;
-    private WeaponType mWeaponType;
+    private WeaponType mWeaponType=WeaponType.Gun;
     private Vector3 mSpawnPostion;
-    private int mLv;
+    private int mLv=1;
 
     public TrainCaptiveCommand(EnemyType enemyType, WeaponType weaponType, Vector3 position, int lv = 1)
     {

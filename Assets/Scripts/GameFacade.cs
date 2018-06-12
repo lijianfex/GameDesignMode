@@ -104,7 +104,18 @@ public class GameFacade
     /// <param name="camp"></param>
     public void ShowCampInfo(ICamp camp)
     {
+        mSoldierInfoUI.Hide();
         mCampInfoUI.ShowCampInfoUI(camp);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="character"></param>
+    public void ShowSoldierInfo(ICharacter character)
+    {
+        mCampInfoUI.Hide();
+        mSoldierInfoUI.ShowSoldierInfoUI(character);
     }
 
     /// <summary>

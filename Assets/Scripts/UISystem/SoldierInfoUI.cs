@@ -16,7 +16,7 @@ public class SoldierInfoUI : IBaseUI
     private Text mAtkRange;//攻击范围
     private Text mMoveSpeed; //移动速度
 
-    
+    private ICharacter mCharacter;
 
     public override void Init()
     {
@@ -37,6 +37,24 @@ public class SoldierInfoUI : IBaseUI
         Hide();
     }
 
+    public void ShowSoldierInfoUI(ICharacter character)
+    {
+        if (character==null||character.IsKilled==true) return;
+        Show();
+        mCharacter = character;
+
+        mSoldierIcon.sprite = FactoryManager.GetAssetFactory.LoadSprite(character.Attr.CharacterBaseAttr.IconSprite);
+        mSoldierName.text = character.Attr.CharacterBaseAttr.Name;
+        ShowHp(mCharacter);
+
+        mSoldierLv.text = character.Attr.Lv.ToString();
+
+        mAtk.text = character.Weapon.Atk.ToString();
+        mAtkRange.text = character.Weapon.AtkRange.ToString();
+        mMoveSpeed.text = character.Attr.CharacterBaseAttr.MoveSpeed.ToString();
+
+    }
+
     public override void Release()
     {
         base.Release();
@@ -45,5 +63,17 @@ public class SoldierInfoUI : IBaseUI
     public override void Update()
     {
         base.Update();
+        ShowHp(mCharacter);
+    }
+
+    private void ShowHp(ICharacter character)
+    {
+        if (character == null) return;
+        mSoldierHP.text =Mathf.Max(character.Attr.CurrentHP,0) + "/" + (character.Attr.CharacterBaseAttr.MaxHP + character.Attr.Strategy.GetExtraHPValue(character.Attr.Lv));
+        mHpSlider.value = Mathf.Max(character.Attr.CurrentHP, 0) / (float)(character.Attr.CharacterBaseAttr.MaxHP + character.Attr.Strategy.GetExtraHPValue(character.Attr.Lv));
+        if(character.CanDestrioy==true)
+        {
+            Hide();
+        }
     }
 }

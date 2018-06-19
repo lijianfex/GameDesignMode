@@ -29,7 +29,7 @@ public abstract class Coffee
 }
 
 /// <summary>
-/// 基础咖啡1
+/// 浓咖啡
 /// </summary>
 public class Espress : Coffee
 {
@@ -40,7 +40,7 @@ public class Espress : Coffee
 }
 
 /// <summary>
-/// 基础咖啡2
+/// 淡咖啡
 /// </summary>
 public class Decaf : Coffee
 {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 武器建造者基类
+/// </summary>
 public abstract class IWeaponBuilder
 {
     protected IWeapon mWeapon; //武器成品

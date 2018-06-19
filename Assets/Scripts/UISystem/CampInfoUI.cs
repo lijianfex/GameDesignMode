@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 兵营信息UI
+/// </summary>
 public class CampInfoUI : IBaseUI
 {
     private Image mCampIcon; //兵营图片

@@ -109,7 +109,7 @@ public class GameFacade
     }
 
     /// <summary>
-    /// 
+    /// 显示战士信息
     /// </summary>
     /// <param name="character"></param>
     public void ShowSoldierInfo(ICharacter character)

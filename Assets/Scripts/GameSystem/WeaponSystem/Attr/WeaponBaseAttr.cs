@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 武器的基础属性
+/// </summary>
 public class WeaponBaseAttr
 {
     protected string mName;             //武器名

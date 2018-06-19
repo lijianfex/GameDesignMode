@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+///成就系统的备忘录类
+/// </summary>
 public class AchievementMemento
 {
     public int EnemyKilledCount = 0; //杀敌数；

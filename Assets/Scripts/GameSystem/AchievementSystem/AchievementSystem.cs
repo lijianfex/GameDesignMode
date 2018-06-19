@@ -59,6 +59,10 @@ public class AchievementSystem : IGameSystem
         //Debug.Log("最大关卡:" + mMaxStageLv);
     }
 
+    /// <summary>
+    /// 创建快照
+    /// </summary>
+    /// <returns></returns>
     public AchievementMemento CreatMemento()
     {
         AchievementMemento memento = new AchievementMemento();
@@ -68,6 +72,10 @@ public class AchievementSystem : IGameSystem
         return memento;
     }
 
+    /// <summary>
+    /// 恢复快照
+    /// </summary>
+    /// <param name="memento"></param>
     public void SetMemento(AchievementMemento memento)
     {
         mEnemyKilledCount = memento.EnemyKilledCount;

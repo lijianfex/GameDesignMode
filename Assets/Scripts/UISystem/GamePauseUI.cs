@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// 游戏暂停UI
+/// </summary>
 public class GamePauseUI : IBaseUI
 {
     private Text mCurrentStageNum;//当前关卡

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 游戏主页场景状态
+/// </summary>
 public class MainState : ISceneState
 {
     private Button BtnPaly;

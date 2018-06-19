@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人建造者
+/// </summary>
 public class EnemyBuilder : ICharacterBuilder
 {
     public EnemyBuilder(Type t, ICharacter character, WeaponType weaponType, IWeapon weapon, Vector3 spawnPosition, int lv) : base(t, character, weaponType, weapon, spawnPosition, lv)
@@ -45,7 +48,7 @@ public class EnemyBuilder : ICharacterBuilder
 
     public override ICharacter GetResult()
     {
-        mCharacter.GameObject.AddComponent<CharacterOnClik>().Character = mCharacter;
+        mCharacter.GameObject.AddComponent<CharacterOnClik>().Character = mCharacter;//添加可以点击的组件
         return mCharacter;
     }
 }

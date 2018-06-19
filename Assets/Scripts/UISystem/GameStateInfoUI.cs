@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 游戏状态UI
+/// </summary>
 public class GameStateInfoUI : IBaseUI
 {
     private List<GameObject> mHearts; //心

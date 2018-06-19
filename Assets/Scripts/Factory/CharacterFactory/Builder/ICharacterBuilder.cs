@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 角色建造者基类
+/// </summary>
 public abstract class ICharacterBuilder
 {
     protected ICharacter mCharacter; //成品角色

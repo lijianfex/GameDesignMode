@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 
-
+/// <summary>
+/// 场景状态基类
+/// </summary>
 public class ISceneState 
 {
     private string mSceneName;

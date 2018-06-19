@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 武器建造者
+/// </summary>
 public class WeaponBuilder : IWeaponBuilder
 {
     public WeaponBuilder(WeaponType weaponType, IWeapon weapon) : base(weaponType, weapon)

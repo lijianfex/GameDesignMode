@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-
+/// <summary>
+/// 训练战士命令类
+/// </summary>
 public class TrainSoldierCommand : ITrainCommand
 {
     private SoldierType mSoldierType;

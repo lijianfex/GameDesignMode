@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 游戏启动开始场景
+/// </summary>
 public class StartState : ISceneState
 {
     private Image mLogo;

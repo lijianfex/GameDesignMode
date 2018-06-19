@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-
+/// <summary>
+/// 战斗状态
+/// </summary>
 public class BattleState : ISceneState
 {
     public BattleState(SceneStateManager sceneStateManager) : base("03Battle", sceneStateManager)

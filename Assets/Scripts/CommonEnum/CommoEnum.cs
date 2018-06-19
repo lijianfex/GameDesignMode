@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 公共枚举类
+/// </summary>
+public class CommoEnum{}
 
 public enum WeaponType
 {
@@ -34,8 +38,4 @@ public enum GameEventType
     NewStage
 }
 
-public class CommoEnum
-{
 
-	
-}

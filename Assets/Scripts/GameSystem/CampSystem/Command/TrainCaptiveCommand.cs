@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// 训练俘兵
+/// 训练俘兵的命令
 /// </summary>
 public class TrainCaptiveCommand : ITrainCommand
 {

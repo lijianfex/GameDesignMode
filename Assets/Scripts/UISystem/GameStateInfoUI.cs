@@ -17,11 +17,12 @@ public class GameStateInfoUI : IBaseUI
     private Text mMessage;//提示信息
 
     private GameObject mGameOver;//游戏结束页面
+    private Button mBtnBackMain;
 
     private float mMsgTimer = 0f;
     private float mMsgTime = 3f;
 
-    private int currentStageNum = 1;
+    private int mCurrentStageNum = 1;
 
     private AliveCountVisitor countVisitor = new AliveCountVisitor();
 
@@ -50,11 +51,11 @@ public class GameStateInfoUI : IBaseUI
         mEnergyNum = UITool.FindChild<Text>(mRootUI, "EnergyNum");
         mMessage = UITool.FindChild<Text>(mRootUI, "Message");
         mGameOver = UnityTool.FindChild(mRootUI, "GameOver");
-
+        mBtnBackMain = UITool.FindChild<Button>(mGameOver, "BtnBackMain");
         AddListeners();
 
         mMessage.text = "";
-        mStageNum.text = currentStageNum.ToString();
+        mStageNum.text = mCurrentStageNum.ToString();
         mGameOver.SetActive(false);
 
 
@@ -63,12 +64,15 @@ public class GameStateInfoUI : IBaseUI
     private void AddListeners()
     {
         mBtnPause.onClick.AddListener(OnPauseClick);
+        mBtnBackMain.onClick.AddListener(OnBackMainClick);
         mFacade.RegisterObserver(GameEventType.NewStage, new NewStageObserverGameStateUI(this));
     }
 
     public override void Release()
     {
         base.Release();
+        mBtnPause.onClick.RemoveListener(OnPauseClick);
+        mBtnBackMain.onClick.RemoveListener(OnBackMainClick);
         mFacade.RemoveObserver(GameEventType.NewStage, new NewStageObserverGameStateUI(this));
     }
 
@@ -77,6 +81,7 @@ public class GameStateInfoUI : IBaseUI
         base.Update();
         UpdateMessageTimer();
         UpdateAliveCount();
+        UpdateIsGameOver();
     }
 
     /// <summary>
@@ -90,12 +95,23 @@ public class GameStateInfoUI : IBaseUI
         mEnergyNum.text = "(" + nowEnergry + "/" + max_Energy + ")";
     }
 
+    /// <summary>
+    /// 更新显示关卡
+    /// </summary>
     public void AddStageNum()
     {
-        currentStageNum += 1;
-        mStageNum.text = currentStageNum.ToString();
+        mCurrentStageNum += 1;
+        mStageNum.text = mCurrentStageNum.ToString();
     }
 
+    /// <summary>
+    /// 检查是否游戏结束
+    /// </summary>
+    private void UpdateIsGameOver()
+    {
+        if (mCurrentStageNum < 10) return;
+        mGameOver.SetActive(true);
+    }
    
 
     /// <summary>
@@ -143,6 +159,14 @@ public class GameStateInfoUI : IBaseUI
     {
         Time.timeScale = 0;
         mFacade.ShowGamePauseUI();
+    }
+
+    /// <summary>
+    /// 返回主页点击事件
+    /// </summary>
+    private void OnBackMainClick()
+    {
+        mFacade.IsGameOver = true;
     }
 
    

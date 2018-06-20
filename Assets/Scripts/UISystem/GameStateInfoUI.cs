@@ -112,6 +112,7 @@ public class GameStateInfoUI : IBaseUI
     private void UpdateIsGameOver()
     {
         if (mCurrentStageNum < 10) return;
+        Time.timeScale = 0;
         mGameOver.SetActive(true);
     }
    
@@ -168,6 +169,7 @@ public class GameStateInfoUI : IBaseUI
     /// </summary>
     private void OnBackMainClick()
     {
+       
         mFacade.IsGameOver = true;
     }
 
